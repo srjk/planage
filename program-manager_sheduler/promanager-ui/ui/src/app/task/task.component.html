@@ -1,0 +1,32 @@
+<div class="head">
+  <h1 mat-dialog-title>Add tasks for the product.</h1>
+  <mat-icon (click)="Close()">close</mat-icon>
+</div>
+<div *ngIf="dataset$" class="panel-body">
+  <mat-list class="list" *ngFor="let taskData of dataset$.predefinedTask">
+    <div class="taskline">
+      <markdown>
+        <mat-list-item class="markdown-text">{{taskData.taskName}}</mat-list-item>
+      </markdown>
+      <button mat-button type="submit" class="add" (click)="deleteTask(taskData.taskId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>
+<div class="example-list">
+  <div *ngIf="toggleInputBox; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <form [formGroup]="addTasks" (keyUp.enter)="addTask(addTasks.value)">
+      <mat-form-field class="field" floatLabel="auto" appearance="outline">
+        <input required matInput formControlName="taskName" type="text" placeholder="Define the task." />
+      </mat-form-field>
+    </form>
+  </ng-template>
+  <ng-template #elseBlock>
+    <button mat-button (click)="enableInputBox()" type="submit">
+      Add Task
+    </button>
+  </ng-template>
+</div>

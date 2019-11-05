@@ -1,0 +1,18 @@
+<div>
+  <!--  <app-sidenav *ngIf="isCookiePresent; else login"></app-sidenav>-->
+  <!--  <ng-template #login>-->
+  <!--    <app-login></app-login>-->
+  <!--  </ng-template>-->
+
+  <div style="margin-left: 45%" class="mat-title">
+    {{programName}}
+  </div>
+  <dx-scheduler [dataSource]="schedulerDataSource" [views]='["week","day","month"]' currentView="month"
+    [startDayHour]="5" [endDayHour]="22" [currentDate]="currentDate" [height]="700"
+    (onAppointmentFormOpening)="onAppointmentFormOpening($event)">
+    <dxi-resource fieldExpr="id" colorExpr="color" [useColorAsDefault]="false" [dataSource]="colorsource">
+    </dxi-resource>
+  </dx-scheduler>
+  <button mat-fab color="primary" class="floating-button" (click)="showAppointmentPopup($event)"><i
+      class="dx-icon-plus"></i></button>
+</div>

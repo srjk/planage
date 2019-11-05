@@ -1,0 +1,52 @@
+<div class="productCards">
+  <mat-card class="example-card">
+    <div>
+      <div class="avatar">
+        <div>
+          <ngx-avatar bgColor="grey" fgColor="white" size="40" name={{data.productName}}></ngx-avatar>
+        </div>
+        <div>
+          <span style="font-size: 1.5em;margin-left: 10px">
+            {{data.productName}} </span>
+        </div>
+      </div>
+
+      <div class="editicon">
+        <button mat-icon-button [matMenuTriggerFor]="menu" >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item (click)="addTaskData(data.id)">
+            <mat-icon>list</mat-icon>
+            <span>Add Tasks</span>
+          </button>
+          <button mat-menu-item (click)="openCalendar(data)">
+            <mat-icon>add</mat-icon>
+            <span>Add Programs</span>
+          </button>
+          <button mat-menu-item (click)="openProgram(data)">
+            <mat-icon>schedule</mat-icon>
+            <span>View Programs</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+    <div style="margin-top: 10px">
+      <div class="mat-card-subtitle">Duration:{{data.durationWeek}} weeks</div>
+      <div class="mat-card-subtitle">Created At: {{data.createdAt|date}}</div>
+    </div>
+
+    <div class="action">
+      <div class="card">
+        <button mat-icon-button (click)="editData()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <div class="card">
+        <button mat-icon-button (click)="deleteData(data)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>

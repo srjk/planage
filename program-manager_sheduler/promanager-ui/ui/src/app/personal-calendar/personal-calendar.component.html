@@ -1,0 +1,15 @@
+<div>
+<!--  <app-sidenav *ngIf="isCookiePresent; else login"></app-sidenav>-->
+<!--<ng-template #login>-->
+<!--  <app-login></app-login>-->
+<!--</ng-template>-->
+
+<dx-scheduler [dataSource]="schedulerDataSource" [views]='["month","week","day"]' currentView="month"
+  [currentDate]="currentDate" [height]="700" [crossScrollingEnabled]="true"
+  (onAppointmentFormOpening)="onAppointmentFormOpening($event)">
+  <dxi-resource fieldExpr="id" colorExpr="color" [useColorAsDefault]="false" [dataSource]="colorsource">
+  </dxi-resource>
+  <dxo-editing [allowAdding]="false" [allowUpdating]="false" [allowDeleting]="false"></dxo-editing>
+</dx-scheduler>
+  </div>
+

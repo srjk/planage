@@ -1,0 +1,7 @@
+<dx-scheduler [dataSource]="schedulerDataSource" [views]='["month","week","day"]' currentView="month"
+  [currentDate]="currentDate" [height]="700" textExpr="taskName"
+  (onAppointmentFormOpening)="onAppointmentFormOpening($event)">
+  <dxi-resource fieldExpr="id" colorExpr="color" [useColorAsDefault]="false" [dataSource]="schedulerDataSource">
+    <dxo-editing [allowAdding]="false"></dxo-editing>
+  </dxi-resource>
+</dx-scheduler>

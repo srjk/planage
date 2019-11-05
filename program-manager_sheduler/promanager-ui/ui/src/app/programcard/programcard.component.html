@@ -1,0 +1,30 @@
+<div class="productCards">
+  <mat-card class="example-card">
+
+    <div class="avatar">
+      <div>
+        <ngx-avatar fgColor="white" bgColor="grey" size="40" name="{{data.text}}"></ngx-avatar>
+      </div>
+      <div>
+        <span style="font-size: 1.5em;margin-left: 10px">
+          {{data.text}} </span>
+      </div>
+
+    </div>
+    <div style="margin-top: 10px">
+
+      <div>No of Participant: {{noOfParticipant}} </div>
+      <div>No of Assignee : {{data.assignee.length}} </div>
+
+    </div>
+    <mat-card-actions>
+      <div>
+        <button mat-icon-button (click)=addParticipant(data) class="card">
+          <mat-icon class="editicon">group_add</mat-icon>
+        </button>
+
+      </div>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

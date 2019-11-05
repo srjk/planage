@@ -1,0 +1,120 @@
+<!-- <div class="body">
+  <h1 class="header">My Programs</h1>
+  <mat-divider></mat-divider>
+  <div *ngIf="data1 == null; else elseBlock" class="example-card">
+    <mat-card>
+      <div style="height:300px; border-radius: 10px; display: flex; flex-direction: row;">
+        <div style="background: rgb(238, 237, 237); width: 75%; height: 292px; margin:5px; border-radius: 5px">
+        </div>
+        <div style="display: flex; flex-direction: column; width: 25%;">
+          <div style="background: rgb(238, 237, 237);  height: 145px; margin:5px; border-radius: 5px"></div>
+          <div style="background: rgb(238, 237, 237);  height: 145px; margin:5px; border-radius: 5px"></div>
+        </div>
+      </div>
+    </mat-card>
+    <div class="emptyBoardDescription">
+      <h2>You don't have a product yet</h2>
+      <p>Tap the + button to create your first board</p>
+    </div>
+  </div>
+
+  <ng-template #elseBlock>
+
+    <div>
+      <div *ngFor="let data of data1" class="example-card">
+        <div *ngFor="let data of data" class="program">
+          <mat-card>
+            <div class="avatar">
+              <div>
+                <ngx-avatar bgColor="grey" fgColor="white" size="40" class="avatarStyle" name={{data.programName}}>
+                </ngx-avatar>
+              </div>
+              <div style="font-size: 1.5em;margin-left: 10px">
+                {{data.programName}}
+              </div>
+            </div>
+            <br>
+            <div>
+              <span class="mat-card-subtitle">{{data.endDate | date}} -
+                {{data.startDate | date }}</span>
+            </div>
+            <div class="action">
+              <button mat-icon-button (click)="openCalender(data)" matTooltipPosition="below"
+                matTooltip="Info about session">
+                <mat-icon>schedule</mat-icon>
+              </button>
+              <button mat-icon-button (click)="addTasks(data.programId)" matTooltipPosition="below"
+                matTooltip="Add tasks">
+                <mat-icon>assignment</mat-icon>
+              </button>
+              <button mat-icon-button (click)="releaseTasks(data.programId)" matTooltipPosition="below"
+                matTooltip="Release tasks">
+                <mat-icon>assignment_turned_in</mat-icon>
+              </button>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+  </ng-template>
+</div> -->
+
+
+<div class="assignee">
+  <div *ngIf="data1 == null" class="example-card">
+    <mat-card>
+      <div style="height:300px; border-radius: 10px; display: flex; flex-direction: row;">
+        <div style="background: rgb(238, 237, 237); width: 75%; height: 292px; margin:5px; border-radius: 5px">
+        </div>
+        <div style="display: flex; flex-direction: column; width: 25%;">
+          <div style="background: rgb(238, 237, 237);  height: 145px; margin:5px; border-radius: 5px"></div>
+          <div style="background: rgb(238, 237, 237);  height: 145px; margin:5px; border-radius: 5px"></div>
+        </div>
+      </div>
+    </mat-card>
+    <div class="emptyBoardDescription">
+      <h2>You don't have a product yet</h2>
+      <p>Tap the + button to create your first board</p>
+    </div>
+  </div>
+  <div>
+    <div class="header">
+      <div class="mat-headline">My Programs</div>
+    </div>
+    <div>
+      <div *ngFor="let data of data1" class="example">
+        <div *ngFor="let data of data" class="program">
+          <mat-card>
+            <div class="avatar">
+              <div>
+                <ngx-avatar bgColor="grey" fgColor="white" size="40" class="avatarStyle" name={{data.programName}}>
+                </ngx-avatar>
+              </div>
+              <div style="font-size: 1.5em;margin-left: 10px">
+                {{data.programName}}
+              </div>
+            </div>
+            <br>
+            <div>
+              <span class="mat-card-subtitle">{{data.endDate | date}} -
+                {{data.startDate | date }}</span>
+            </div>
+            <div class="action">
+              <button mat-icon-button (click)="openCalender(data)" matTooltipPosition="below"
+                matTooltip="Info about session">
+                <mat-icon>schedule</mat-icon>
+              </button>
+              <button mat-icon-button (click)="addTasks(data.programId)" matTooltipPosition="below"
+                matTooltip="Add tasks">
+                <mat-icon>assignment</mat-icon>
+              </button>
+              <button mat-icon-button (click)="releaseTasks(data.programId)" matTooltipPosition="below"
+                matTooltip="Release tasks">
+                <mat-icon>assignment_turned_in</mat-icon>
+              </button>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

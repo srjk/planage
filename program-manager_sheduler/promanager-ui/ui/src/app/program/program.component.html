@@ -1,0 +1,18 @@
+<div>
+<!--  <app-sidenav *ngIf="isCookiePresent; else login"></app-sidenav>-->
+<!--  <ng-template #login>-->
+<!--    <app-login></app-login>-->
+<!--  </ng-template>-->
+  <div class="header">
+    <div class="mat-headline">
+      My Programs
+    </div>
+
+  </div>
+  <div class="program">
+    <div class="mat-title">{{productName}}</div>
+    <div class="progarmCard">
+      <app-programcard *ngFor="let data of productData" [data]="data"></app-programcard>
+    </div>
+  </div>
+</div>

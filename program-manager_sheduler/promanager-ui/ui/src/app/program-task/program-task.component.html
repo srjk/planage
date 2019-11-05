@@ -1,0 +1,49 @@
+<div class="mat-title"> Task</div>
+
+<div>
+<div class="task">
+<div style="overflow-y: scroll;max-height: 50%" class="tasklist">
+  <div> <span >Task</span> <span style="margin-left: 80%">Date</span></div>
+  <mat-list *ngFor="let task of dataset$">
+    <mat-list-item>
+      <div class="taskname">
+          {{task.taskName}}
+      </div>
+      <div class="datepicker" *ngIf="task.dueDate!=null" >
+         {{task.dueDate | date}}
+      </div>
+      <div class="datepicker" *ngIf="task.dueDate===null" >
+        <mat-form-field>
+        <input  matInput [matDatepicker]="picker" placeholder="Due date for task" (dateInput)="date(task,$event)" (dateChange)="date(task,$event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <!-- <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" (dateInput)="date(task,$event)"
+            (dateChange)="date(task,$event)" [valueAsDate]="task.duedate">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+    </mat-list-item>
+  </mat-list>
+</div>
+</div>
+
+<div *ngIf="toggleInputBox; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+  <form [formGroup]="addTasks" (keyUp.enter)="addTaskFromPrograms(addTasks.value)">
+    <mat-form-field class="field" floatLabel="auto" appearance="outline">
+      <input required  matInput formControlName="taskName" type="text" placeholder="Define the task." />
+    </mat-form-field>
+  </form>
+</ng-template>
+<ng-template #elseBlock>
+
+  <button  mat-button (click)="enableInputBox()" type="submit">
+    Add Task
+  </button>
+</ng-template>
+</div>
+

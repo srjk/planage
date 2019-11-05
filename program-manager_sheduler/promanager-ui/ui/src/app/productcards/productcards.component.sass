@@ -1,0 +1,82 @@
+body
+    margin: 0px
+    padding: 0px
+
+.actionBar
+    z-index: 1000
+
+.avatar
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: flex-start
+    justify-items: center
+    margin: 0
+    padding: 0
+
+.mat-card-actions
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+
+.productCards
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+
+    margin-bottom: 50px
+    width: 400px
+    height: 148px
+    border-radius: 5px
+    margin-left: 20px
+
+.edit
+    position: fixed
+    margin-top: 5px
+    margin-left: 5px
+Product
+.card
+    width: 5%
+    margin-left: 8px
+    margin-right: 8px
+
+.editicon
+    position: absolute
+    top: 5px
+    right: 8px
+.action
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+    justify-items: flex-end
+    justify-content: flex-end
+
+.example-card
+    margin-right: 4px
+    width: 400px
+    height: 148px
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    border-radius: 5px
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1)
+
+.example-card:hover
+    box-shadow: 0 7px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.22)
+
+.title
+    font-size: 1em
+    padding: 0
+
+.float-left
+    display: flex
+    justify-content: flex-start
+
+@media(max-width: 600px)
+    .productCards
+        display: flex
+        flex-direction: column
+        flex-wrap: wrap
+        justify-content: space-around
+        width: 300px

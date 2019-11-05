@@ -1,0 +1,37 @@
+<mat-icon (click)="Close()" class="closeDailog">close</mat-icon>
+
+<h1 mat-dialog-title>Plan the tasks.</h1>
+
+<mat-tab-group animationDuration="2000ms">
+  <mat-tab label="Predefined Tasks for Program">
+
+  </mat-tab>
+  <mat-tab label="Additional Tasks">
+    <div class="panel-body">
+      <mat-list *ngFor="let task of dataset$">
+        <markdown>
+          <mat-list-item>
+            Task - {{task.taskName}}
+            Due Date - {{task.dueDate | date}}
+          </mat-list-item>
+        </markdown>
+        <button mat-button type="submit" class="add" (click)="deleteTask(programId,task.taskId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list>
+      <div *ngIf="toggleInputBox; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <form [formGroup]="addTasks" (keyUp.enter)="addTaskFromPrograms(addTasks.value)">
+          <mat-form-field class="field" floatLabel="auto" appearance="outline">
+            <input required matInput formControlName="taskName" type="text" placeholder="Define the task." />
+          </mat-form-field>
+        </form>
+      </ng-template>
+      <ng-template #elseBlock>
+        <button mat-button (click)="enableInputBox()" type="submit">
+          Add Task
+        </button>
+      </ng-template>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Add Slack Integration to the board</h1>
+<div mat-dialog-content [formGroup]="myGroup">
+    <mat-form-field appearance="outline">
+        <!-- <input matInput [(ngModel)]="boardName" placeholder="Enter board name"> -->
+        <input matInput placeholder="Enter slack webhook url" formControlName="webhook" />
+    </mat-form-field>
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="flex-end">
+    <button mat-button [mat-dialog-close]="webhook" color="primary" [disabled]="!myGroup.valid" (click)="addSlack(webhook)">Add Slack</button>
+</div>

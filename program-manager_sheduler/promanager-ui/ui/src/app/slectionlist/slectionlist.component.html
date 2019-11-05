@@ -1,0 +1,48 @@
+
+<div class="header">
+<div  *ngIf="participantData" class="program">
+  <div class="mat-title">{{participantData.text}}</div>
+  <div class="subtitle">{{participantData.startDate | date}} - {{participantData.endDate | date}}</div>
+</div>
+<div class="selection" >
+<mat-form-field >
+  <mat-select [(value)]="selected">
+    <mat-option (click)="calendarOption()" value='calendar'>Calendar</mat-option>
+    <mat-option (click)="listOption()"  value='list'>List</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+
+  <mat-select [(value)]="selectedOption" >
+    <mat-option (click)="sessionOption()" value='session'>Session</mat-option>
+    <mat-option (click)="taskOption()"  value='task'>Task</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+</div>
+<div *ngIf="participantData" >
+<app-task-list *ngIf="loadComponent==='listtask'" [data]="participantData"></app-task-list>
+<app-task-calendar *ngIf="loadComponent==='calendartask'" [data]="programId"></app-task-calendar>
+<div class="sessionlist" *ngIf="programId!=undefined" >
+<app-session-list *ngIf="loadComponent==='listsession'" [data]="programId" ></app-session-list></div>
+
+<app-personal-calendar *ngIf="loadComponent==='calendarsession'" [data]="programId"></app-personal-calendar>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

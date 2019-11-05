@@ -1,0 +1,21 @@
+
+<div class="productCards">
+  <mat-card (click)="getProgramDetail(data.programId)" class="example-card">
+
+    <div class="avatar">
+      <div>
+        <ngx-avatar fgColor="white" bgColor="grey" size="40" name="{{data.text}}"></ngx-avatar>
+      </div>
+      <div>
+        <span style="font-size: 1.5em;margin-left: 10px">
+          {{data.text}} </span>
+      </div>
+
+    </div>
+    <div style="margin-top: 10px">
+      <div class="mat-card-subtitle"> {{data.startDate | date}} - {{data.endDate |date}} </div>
+    </div>
+
+
+  </mat-card>
+</div>

@@ -1,0 +1,18 @@
+
+<div>
+    <div class="mat-headline">
+        {{productName}}
+    </div>
+
+        <dx-scheduler id="scheduler" [dataSource]="schedulerDataSource" [views]='["month"]' currentView="month"
+            [currentDate]="currentDate" [height]="700" indicatorUpdateInterval=800000
+            (onAppointmentRendered)="onAppointmentRendered($event)"
+            (onAppointmentFormOpening)="onAppointmentFormOpening($event)">
+
+            <dxi-resource fieldExpr="id" [dataSource]="colorsource">
+            </dxi-resource>
+        </dx-scheduler>
+        <button mat-fab color="primary" class="floating-button" (click)="showAppointmentPopup()"><i
+                class="dx-icon-plus"></i></button>
+    </div>
+

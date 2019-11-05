@@ -1,0 +1,5 @@
+ <app-sidenav *ngIf="isCookiePresent; else login"></app-sidenav>
+
+<ng-template #login>
+  <app-login></app-login>
+</ng-template>

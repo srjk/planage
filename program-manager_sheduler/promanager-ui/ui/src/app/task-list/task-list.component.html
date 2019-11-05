@@ -1,0 +1,16 @@
+<div *ngIf="taskData.length==0" class="mat-headline">
+  No Task Available
+</div>
+<div *ngIf="taskData" >
+<div   class="tabcontent" *ngFor="let participant of this.taskData ">
+  <div class="dueDate">
+    <span class="mat-subheading-2">{{participant.date | date}}</span>
+    <mat-progress-bar  mode="determinate" [value]="getValue(shoes.selectedOptions.selected.length,participant.tasks.length)"></mat-progress-bar>
+    <mat-selection-list   (selectionChange)="onSelection($event)" #shoes>
+      <mat-list-option checkboxPosition="before" [selected]="task.status"  *ngFor="let task of participant.tasks" [value]="task">
+        <markdown>{{task.taskName }}</markdown>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>
+</div>

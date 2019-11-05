@@ -1,0 +1,11 @@
+<div>
+  <div class="header">
+    <div class="mat-headline">
+      Programs
+    </div>
+  </div>
+
+  <div  class="program" *ngIf="programs" >
+    <app-participant-card *ngFor="let program of programs" [data]="program"></app-participant-card>
+  </div>
+</div>

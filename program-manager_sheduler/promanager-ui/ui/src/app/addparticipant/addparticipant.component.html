@@ -1,0 +1,27 @@
+
+<h2>Upload the CSV file for participant</h2>
+<h3> File headers should only contain  name,email in the following sequence </h3>
+<input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" />
+<table class="minimalistBlack" *ngIf="records.length > 0">
+  <thead>
+  <tr>
+    <th>name </th>
+    <th>email </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let record of records;let i = index;">
+    <td> <span>{{record.name}}</span> </td>
+    <td> <span>{{record.email}}</span> </td>
+  </tr>
+  </tbody>
+</table>
+<div *ngIf="toggleInputBox; then thenBlock"></div>
+<ng-template #thenBlock>
+  <h2 style="color: red"> Please Enter the correct csv file with header name  email  </h2>
+</ng-template>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [disabled]="records.length===0" [mat-dialog-close]="records" cdkFocusInitial>Upload</button>
+</mat-dialog-actions>
+

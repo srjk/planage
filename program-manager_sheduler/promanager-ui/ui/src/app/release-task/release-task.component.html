@@ -1,0 +1,25 @@
+<div  class="mat-dialog-title">Select tha tasks to be released.</div>
+<div *ngIf="dataset$">
+<div class="list">
+  <mat-selection-list (selectionChange)="onSelection($event)">
+    <mat-list-option checkboxPosition="before" [selected]="data.status"  *ngFor="let data of dataset$" [value]="data">
+      <div class="taskname">{{data.taskName }}</div>
+      <div >{{data.dueDate |date}}</div>
+    </mat-list-option>
+  </mat-selection-list>
+  <!-- <mat-list>
+    <mat-list-item (click)="toggle(data)">
+      <mat-checkbox [checked]="checked"></mat-checkbox>
+      <markdown>{{data.taskName}}</markdown>
+    </mat-list-item>
+  </mat-list> -->
+</div>
+<div>
+<!--    <button mat-raised-button class="addtask" (click)="Close()" type="submit">-->
+<!--        Close-->
+<!--      </button>-->
+  <button mat-raised-button class="addtask" (click)="releaseTask()" type="submit">
+    Release
+  </button>
+</div>
+</div>
