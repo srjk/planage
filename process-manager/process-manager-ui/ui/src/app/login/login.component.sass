@@ -1,0 +1,186 @@
+.hero-image
+  height: 100vh
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/459654/pexels-photo-459654.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+  background-size: cover
+  overflow: hidden
+  position: relative
+
+.container
+  display: flex
+  flex-direction: column
+  margin-top: 15vh
+  position: relative
+  border-radius: 5px
+  background-color: transparent
+  padding: 30px
+  padding-right: 30px
+  margin-right: 20%
+  margin-left: 20%
+
+  &-content
+    font-size: 2rem
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    color: #f7f7f7
+
+@media (max-width: 600px)
+  .google-button
+    width: 140%
+    margin-right: 25%
+    margin-left: 25%
+
+button ~ button
+  width: 90%
+
+.google-button__text
+  display: inline-block
+  vertical-align: middle
+  padding: 0 24px
+  font-size: 14px
+  font-weight: bold
+  font-family: 'Roboto',arial,sans-serif
+
+.google-button__icon
+  display: inline-block
+  vertical-align: middle
+  margin: 8px 0 8px 8px
+  width: 18px
+  height: 18px
+  box-sizing: border-box
+
+.anchor
+  position: relative
+  display: flex
+  justify-content: center
+  align-content: center
+
+.mask
+  position: absolute
+  background-color: #F8F8F8
+  height: 10vh
+  width: 60vw
+  z-index: 2
+  opacity: 0.5
+
+.buttn
+  position: absolute
+  z-index: 3
+  text-decoration: none
+
+.google-button
+  height: 40px
+  border-width: 0
+  background: rgb(255, 255, 255)
+  color: #737373
+  border-radius: 5px
+  white-space: nowrap
+  box-shadow: 1px 1px 0px 1px rgba(0.5,0.5,0.5,0.5)
+  transition-property: background-color, box-shadow
+  transition-duration: 150ms
+  transition-timing-function: ease-in-out
+  padding: 0
+
+  &:focus,
+  &:hover
+    box-shadow: 1px 4px 5px 1px rgba(0.5,0,0.5,0.5)
+
+  &:active
+    background-color: #e5e5e5
+    box-shadow: none
+    transition-duration: 10ms
+
+  .google-btn
+    position: relative
+    margin: 25px
+    width: 80%
+    min-width: 184px
+    max-width: 184px
+    height: 42px
+    background-color: #fcfcfc
+    border-radius: 2px
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .2)
+    cursor: pointer
+    cursor: hand
+    align-self: center
+    user-select: none
+    transition: all 400ms ease 0s
+    display: flex
+
+  & .google-icon-wrapper
+    position: absolute
+    margin-top: 1px
+    margin-left: 1px
+    width: 40px
+    height: 40px
+    border-radius: 2px
+    user-select: none
+
+  & .google-icon-svg
+    position: absolute
+    margin-top: 11px
+    margin-left: 11px
+    width: 18px
+    height: 18px
+    user-select: none
+
+  & .btn-text
+    float: right
+    margin: 11px 14px 40px 40px
+    color: #757575
+    font-size: 14px
+    letter-spacing: .2px
+    font-family: Roboto
+    user-select: none
+
+  &:hover
+    box-shadow: 0 3px 8px rgba(117, 117, 117, .5)
+    user-select: none
+
+  &:active
+    box-shadow: 0 1px 1px #757575
+    background: #F8F8F8
+    color: #fff
+    user-select: none
+
+.normal-btn
+  margin: 25px
+  width: auto
+  display: inline-block
+  min-width: auto
+  max-width: 184px
+  height: 42px
+  background-color: #fcfcfc
+  border-radius: 2px
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .2)
+  cursor: pointer
+  cursor: hand
+  align-self: center-webkit-touch-callout
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  transition: all 400ms ease 0s
+
+  & .btn-text
+    float: left
+    margin: 11px 14px 11px 14px
+    color: #757575
+    font-size: 14px
+    letter-spacing: .2px
+    font-family: Roboto
+    user-select: none
+
+  &:hover
+    box-shadow: 0 3px 8px rgba(117, 117, 117, .5)
+    user-select: none
+
+  &:active
+    box-shadow: 0 1px 1px #757575
+    background: #F8F8F8
+    color: #fff
+    user-select: none
+
+.log
+  display: flex
+  justify-content: center
+  position: relative

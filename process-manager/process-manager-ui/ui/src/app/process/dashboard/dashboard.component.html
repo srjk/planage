@@ -1,0 +1,32 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.9)" size="medium" color="#fff" type="ball-spin-fade">
+    <p style="color: white;">Loading, Please wait...</p>
+  </ngx-spinner>
+  
+  <div *ngIf="boardList.length!==0; else noBoardFound" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="40px"
+    fxLayoutAlign="flex-start">
+    <ng-container *ngFor="let board of boardList">
+      <mat-card class="example-card" fxFlex="0 3 calc(33.3% - 40px)" fxFlex.lt-md="0 1 calc(50% - 40px)"
+        fxFlex.lt-sm="100%">
+        <mat-card-header>
+          <div class="container-div" fxLayout="row" fxLayoutAlign="start center">
+            <ngx-avatar size=40 [src]="userProfile" class="board-avatar"></ngx-avatar>
+            <mat-card-title style="margin-top: 10px;padding-left: 15px">{{board.boardName}}</mat-card-title>
+          </div>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content style="margin-top: 15px; margin-left: 5px;">
+          <span>Owner:</span> {{board.boardOwner}}
+        </mat-card-content>
+        <mat-card-content style="margin-left: 5px; margin-bottom: 0;"><span>Created At:</span>
+          {{board.createdAt | date: 'dd LLL yy hh:mm a'}}
+        </mat-card-content>
+        <mat-card-actions fxLayout fxLayoutAlign="end" style="margin-right: 8px;">
+          <button (click)="onOpenBoard(board)" style="font-size: 16px;" mat-button color="primary">view</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+  
+  <ng-template #noBoardFound>
+    <h1>Currently, there is no board.</h1>
+  </ng-template>

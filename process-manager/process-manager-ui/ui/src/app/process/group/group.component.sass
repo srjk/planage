@@ -1,0 +1,286 @@
+.card
+  width: 90%
+  margin: 20px 5%
+
+.table-container
+  overflow: scroll
+
+::-webkit-scrollbar
+  width: 0
+  height: 0
+
+::-webkit-scrollbar-thumb
+  background: lightgrey
+
+::-webkit-scrollbar-track
+  background: lightgrey
+
+table
+  font-family: arial, sans-serif
+  border-collapse: collapse
+  width: 100%
+  margin: 10px 0 0 0
+
+
+.taskHeader
+  text-align: left
+  border: none
+
+.addRowDiv
+  margin: 0 4px
+  width: 100%
+  border: 1px dashed grey
+
+.addRowInputBox
+  width: 100%
+  border: 1px dashed black
+  outline: none
+
+.addColumnHeader
+  max-width: 20px
+
+.addGroupHeader
+  width: 3%
+  border: none
+
+thead
+  th
+    position: -webkit-sticky
+    position: sticky
+    top: 0
+    background-color: #FFFFFF
+
+tbody
+  th
+    position: -webkit-sticky
+    position: sticky
+    left: 0
+    background-color: #FFFFFF
+
+thead
+  th
+    &:first-child
+      left: 0
+      z-index: 1
+      background-color: #FFFFFF
+
+.rowDeleteIcon
+  color: lightgrey
+  &:hover
+    cursor: pointer
+    color: darkorchid
+
+.columnHeader
+  text-align: center
+
+.sideHeader
+  padding-right: 15px !important
+
+.columnHeader-container
+  &:hover
+    .columnHeader
+      margin-right: 10px
+    .columnDeleteIcon
+      display: inline
+
+.columnDeleteIcon
+  color: lightgrey
+  display: none
+  &:hover
+    cursor: pointer
+    color: red
+
+.taskHeader
+  display: flex
+  align-items: center
+  justify-content: center
+  max-width: 100%
+
+.mat-menu-item
+  border: none
+  outline: none
+  &:hover
+    color: black
+.groupIcon
+  color: lightgrey
+  &:hover
+    color: black
+    cursor: pointer
+
+::ng-deep mat-card-header .mat-card-header-text
+  margin: 0 0
+
+mat-card-header span
+  font-size: 20px
+  color: darkorchid
+
+mat-card-header
+  display: flex
+  align-items: center
+
+.mat-expansion-panel:not([class*='mat-elevation-z'])
+  box-shadow: none
+
+.firstColumn
+  width: available
+
+.row-task-cell
+  min-width: 100%
+
+.row-column-cell
+  padding-top: 0px !important
+  margin: 0px !important
+  min-width: 10rem
+  max-width: 100%
+  min-height: 27px
+  background: transparent
+  border: 1px solid black
+  &:focus
+    outline: none
+  &:hover
+    cursor: pointer
+
+.text-number-cell
+  min-width: 160px
+  min-height: 27px
+
+td
+  width: 1px
+
+#group-name
+  border: none !important
+  outline-color: #008cff
+
+.column-name
+  border: none !important
+  width: 95%
+  outline-color: #008cff
+  text-align: center
+
+
+
+// ================        Status column sass        ========================
+
+#container
+  visibility: hidden
+
+#loader
+  color: #008cff
+  height: 40px
+  left: 45%
+  position: absolute
+  top: 45%
+  width: 30%
+
+.wrap
+  margin: 0 auto
+  width: 300px
+  text-align: center
+
+#preview
+  border: 1px solid
+  background-color: #ba68c8
+  height: 40px
+  display: none
+
+//.group-color-picker
+//  height: 50px !important
+//  width: 100px !important
+.group-color-picker-input
+  width: 100%
+  height: 100%
+  border: none
+
+
+
+/* Tile customization styles */
+
+#element+.e-container
+  background-color: transparent
+  border-color: transparent
+  box-shadow: none
+
+#element+.e-container .e-custom-palette.e-palette-group
+  height: 182px
+  padding: 0px
+
+#element+.e-container .e-palette .e-custom-tile
+  border: 0
+  color: #fff
+  height: 36px
+  font-size: 18px
+  width: 36px
+  line-height: 36px
+  border-radius: 50%
+  margin: 2px 5px
+
+#element+.e-container .e-palette .e-custom-tile.e-selected::before
+  content: '\e933'
+
+#element+.e-container .e-palette .e-custom-tile.e-selected
+  outline: none
+
+h4
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'
+  font-size: 14px
+
+.label-list-container
+  max-height: 50px
+  overflow-x: scroll
+  overflow: scroll
+
+.label-list:hover i
+  padding: 10px
+  border-radius: 5px
+  visibility: visible
+
+.label-list i
+  visibility: hidden
+
+.labelinput
+  padding: 10px
+
+.labelinput input
+  border: 1px solid lightgrey
+
+.buttondiv
+  margin: 0 auto
+
+.input-color
+  width: 220px
+  height: auto
+
+.close-div i
+  font-size: 16px
+  color: grey
+  padding: 5px
+
+.label-color
+  height: 10px
+  width: 10px
+  border-radius: 2px
+  padding: 2px
+
+::ng-deep .mat-menu-content
+  position: relative !important
+
+.status
+  color: transparent
+  text-shadow: 0 0 0 gray
+
+.staus:focus
+  outline: none
+  filter: blur(20px)
+
+.person-avatar div.avatar-container
+  margin-top: 0
+  margin-left: 25px
+
+.unassign_icon
+  display: none
+
+.assignee_list
+  &:hover
+    .unassign_icon
+      display: inline
+      cursor: pointer

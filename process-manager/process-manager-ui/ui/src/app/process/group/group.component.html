@@ -1,0 +1,184 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-icon class="groupIcon" [matMenuTriggerFor]="groupMenuIcon">arrow_drop_down_circle</mat-icon>
+
+    <input id="group-name" type="text" value={{group.groupName}} (keydown)="onChangeGroupName($event)"
+      [ngStyle]="{'color': group.groupColor}">
+    <div class="group-color-picker">
+      <input #ignoredInput class="group-color-picker-input" [colorPicker]="color"
+        [cpIgnoredElements]="[ignoredButton, ignoredInput]" [(cpToggle)]="toggle" [cpDisableInput]=true
+        (colorPickerChange)="color=$event" (colorPickerClose)="onChangeGroupColor(color)" [cpHeight]="200" />
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let column of displayedColumns; let i = index" [ngClass]="{taskHeader: i == 0}"
+              class="columnHeader">
+              <div *ngIf="i==0 || i==1; else firstColumnHeader">
+                <input class="column-name" type="text" value={{column.columnName}}
+                  (keydown)="onChangeColumnName(column.columnId, $event)" />
+              </div>
+              <ng-template #firstColumnHeader>
+                <div fxLayout="row" fxLayoutAlign="center center" class="columnHeader-container">
+                  <input class="column-name" type="text" value={{column.columnName}}
+                    (keydown)="onChangeColumnName(column.columnId, $event)">
+                  <mat-icon class="columnDeleteIcon" (click)="onDeleteColumn(column)" *ngIf="i!==0">delete</mat-icon>
+                </div>
+              </ng-template>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of group.groupRows">
+            <ng-container *ngFor="let cell of row.rowCells; let j = index">
+              <th *ngIf="j==0; else personColumnRow" fxLayout="row" fxLayoutAlign="center" class="sideHeader">
+                <mat-icon class="rowDeleteIcon" mat-icon-button [matMenuTriggerFor]="rowMenuIcon"
+                  [matMenuTriggerData]="{currentRow: row}">arrow_drop_down</mat-icon>
+                <input type="text" (keydown)="onUpdateRowValue(row.rowId, cell.cellId, $event)" [value]="cell.cellValue"
+                  class="row-task-cell">
+              </th>
+              <ng-template #personColumnRow>
+                <ng-container *ngIf="j==1; else statusColumnRow">
+                  <td>
+                    <div [matMenuTriggerFor]="subscriberList"
+                      [matMenuTriggerData]="{personCellId: cell.cellId, currentRowId: row.rowId}"
+                      style="width: 80px; height: 27px; border: 1px solid black;" fxLayout fxLayoutAlign="center center"
+                      class="assignee_list">
+                      <div class="person-avatar-div">
+                        <ngx-avatar class="assignee" [size]="25" [src]="cell.cellValue" class="person-avatar">
+                        </ngx-avatar>
+                      </div>
+                      <mat-icon style="font-size: 15px; margin-left: 5px" class="unassign_icon"
+                        (click)="onUnassignTask(row.rowId, cell.cellId)">remove_circle</mat-icon>
+                    </div>
+                  </td>
+                </ng-container>
+              </ng-template>
+              <ng-template #statusColumnRow>
+                <td>
+                  <input [attr.id]="cell.cellId" class="row-column-cell" type="text" readonly="readonly"
+                    [matMenuTriggerFor]="statusMenu"
+                    [matMenuTriggerData]="{statusColumnId: cell.cellId, currentRow: row.rowId}"
+                    [value]="cell.cellValue.label" [ngStyle]="{
+                          'backgroundColor': cell.cellValue.color,
+                          'color': 'white',
+                          'text-align': 'center',
+                          'padding-top':0,'padding-bottom':0}">
+                </td>
+              </ng-template>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+  <input (focusout)="onAddRow($event)" (keydown)="onAddRowByEnter($event)" class="addRowInputBox" type="text"
+    placeholder="+ Add Row">
+</mat-card>
+
+
+<mat-menu #rowMenuIcon="matMenu">
+  <ng-template matMenuContent let-row="currentRow">
+    <button mat-menu-item [matMenuTriggerFor]="subGroupMenu"
+      [matMenuTriggerData]="{groupData: this.displayedGroups, rowData: row}">
+      <span>Move row to another group</span>
+    </button>
+    <button mat-menu-item (click)="onDeleteRow(row)">
+      <span>Delete Row</span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #subscriberList="matMenu">
+  <ng-template matMenuContent let-cellId="personCellId" let-rowId="currentRowId">
+    <div *ngFor="let subscriber of boardSubscribers">
+      <button mat-menu-item (click)="onAssignTask(cellId, rowId, subscriber.subscriberProfile)">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <ngx-avatar size=30 [src]="subscriber.subscriberProfile" class="subscriber-avatar"></ngx-avatar>
+            <div
+              style="background-color: green; border-radius: 5px; height: 10px; width: 10px; bottom: -28px;left: -6px;position: relative;">
+            </div>
+            <span style="padding-left: 5px;">{{subscriber.subscriberName}}</span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #subGroupMenu="matMenu">
+  <ng-template matMenuContent let-groups="groupData" let-currentRow="rowData">
+    <button mat-menu-item *ngFor="let group of displayedGroups">
+      <span (click)="onMoveRow(group,currentRow)">{{group.groupName}}</span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #groupMenuIcon="matMenu">
+  <button mat-menu-item #ignoredButton (click)="toggle=!toggle" class="groupMenubutton">
+    <mat-icon class="groupMenuIcon">fiber_manual_record</mat-icon>
+    <span>Change group color</span>
+  </button>
+
+  <button mat-menu-item (click)="onDeleteGroup(board, group)">
+    <mat-icon class="groupMenuIcon">delete</mat-icon>
+    <span>Delete Group</span>
+  </button>
+</mat-menu>
+
+<mat-menu #subBoardMenu="matMenu">
+  <ng-template matMenuContent let-boards="allboards">
+    <button mat-menu-item *ngFor="let board of boardList">
+      <span>{{board.boardName}}</span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #statusMenu="matMenu">
+  <div fxLayout="row" fxLayoutAlign="end">
+    <mat-icon class="close-div" style="cursor: pointer; color: lightgray">cancel</mat-icon>
+  </div>
+
+
+  <ng-template class="label-list-container" matMenuContent let-id="statusColumnId" let-rowid="currentRow">
+    <div *ngIf="labelList.length==0; else currentLabels"
+      style="margin: 10px 10px 0 10px;text-align: center;color: lightgray">
+      No Label yet
+    </div>
+
+    <ng-template #currentLabels>
+      <div *ngFor="let lab of labelList; let i = index" fxLayout="row" fxLayoutAlign="space-between"
+        style="cursor: pointer">
+
+        <div fxLayout="row" fxLayoutAlign="space-around center" style="padding-left: 10px;"
+          (click)="onSaveData(rowid, id, lab.label, lab.color)">
+          <div id="colorId" class="label-color " [ngStyle]="{ 'background-color': lab.color }"></div>
+          <span id="labelId" style="padding-left: 8px ">{{ lab.label }}</span>
+        </div>
+        <mat-icon (click)="deleteStatus(i)" style="cursor: pointer; color: red">delete</mat-icon>
+      </div>
+    </ng-template>
+
+  </ng-template>
+
+  <div class="labelinput" (click)="$event.stopPropagation()">
+    <input type="text" [(ngModel)]="label" placeholder="Enter label: " />
+  </div>
+
+  <div class="input-color" (click)="$event.stopPropagation()">
+    <div id="preview"></div>
+    <div>
+      <input ejs-colorpicker type="color" id="element" value="#ba68c8" mode="Palette" [columns]="colCount"
+        [inline]="true" [modeSwitcher]="false" [showButtons]="false" [presetColors]="customColors"
+        (beforeTileRender)="tileRender($event)" (change)="onChange($event)" />
+    </div>
+  </div>
+
+  <div class="buttondiv" fxLayout fxLayoutAlign="space-around" (click)="$event.stopPropagation()">
+    <button style="height: 30px" mat-raised-button color="primary" (click)="createStatus()">Create</button>
+  </div>
+</mat-menu>

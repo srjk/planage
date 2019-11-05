@@ -1,0 +1,144 @@
+<header class="board-header" *ngIf="board" fxLayout="column">
+
+    <div class="main-navbar" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between">
+        <input contenteditable="true" fxFlex="30" #boardName class="board-name"
+            (keydown)="onBoardNameChange(board, $event)" [value]="board. boardName" />
+        <div class="border-header-links" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="flex-end" fxFlex="25">
+
+            <button class="link-icon invite-member-icon" *ngIf="isInviteMemberLink$ | async"
+                [matMenuTriggerFor]="invitedMenu" (click)="onLoadApplicationUsers()">+ Invite member</button>
+            <button class="link-icon group-icon" [matMenuTriggerFor]="subscriberList">
+                <mat-icon>group</mat-icon>
+            </button>
+
+            <div>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+
+                    <button mat-menu-item *ngIf="!(isInviteMemberLink$ | async)">
+                        <mat-icon>person_add</mat-icon>
+                        <span>Invite members</span>
+                    </button>
+
+                    <button mat-menu-item (click)="onDuplicateBoard()">
+                        <mat-icon>file_copy</mat-icon>
+                        <span>Duplicate board</span>
+                    </button>
+                    <button mat-menu-item (click)="onImportOpen()">
+                        <mat-icon>view_headline</mat-icon>
+                        <span>Add multiple rows</span>
+                    </button>
+
+                    <button mat-menu-item (click)="onSlackEnable()" fxLayout="row" fxLayoutAlign="start center">
+                        <!-- <div fxLayout="row" fxLayoutAlign="space-around center"> -->
+                        <mat-icon> <span class="iconify" data-icon="mdi-slack" data-inline="false" data-width="25px"
+                                data-height="25px" style="color: #565656;margin-right: 3px;"></span></mat-icon>
+                        <span>Integrate slack</span>
+                        <!-- </div> -->
+                    </button>
+                    <button mat-menu-item (click)="onDeleteBoard()">
+                        <mat-icon>delete_sweep</mat-icon>
+                        <span>Delete board</span>
+                    </button>
+                    <button mat-menu-item (click)="onLogout()">
+                        <mat-icon>logout</mat-icon>
+                        <span>Log out</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <section fxHide fxShow.gt-sm="true" class="border-description-bar">
+            <textarea type="text" [value]="board.boardDescription" class="border-description"
+                placeholder="Add board description" (keydown)="onBoardDescriptionChange(board, $event)">
+      <!--    <p contenteditable="true" class="border-description">{{board.boardDescription}}</p>-->
+    </textarea>
+        </section>
+    </div>
+
+    <hr class="style-three">
+
+    <div fxLayout="row" class="groupHeader" fxLayoutAlign="start center">
+        <h3 style="margin-bottom: 0">Groups</h3>
+        <button class="addColumnbutton" mat-icon-button [matMenuTriggerFor]="menuColumn">
+            <mat-icon>add_circle</mat-icon>
+        </button>
+    </div>
+    <mat-menu #menuColumn="matMenu">
+        <button mat-menu-item (click)="onAddStatusColumn()">
+            <mat-icon>text_format</mat-icon>
+            <span>Add Column</span>
+        </button>
+
+        <button mat-menu-item (click)="onAddGroup()">
+            <mat-icon>view_stream</mat-icon>
+            <span>Add Group</span>
+        </button>
+    </mat-menu>
+
+</header>
+
+<main fxLayout="column">
+    <app-group *ngFor="let group of board?.boardGroups" [groupId]="group.groupId" [groups]="allGroups"></app-group>
+</main>
+
+
+<mat-menu #invitedMenu="matMenu" class="invitemenudiv1">
+    <ngx-spinner name="invite" [fullScreen]="false">
+        <p style="color: white; margin-top: 55px;">Loading...</p>
+    </ngx-spinner>
+
+    <form class="example-form" (click)="$event.stopPropagation()" [formGroup]="emailGroup">
+        <mat-form-field class="example-full-width" (click)="$event.stopPropagation()">
+
+            <input type="email" placeholder="Enter user email" aria-label="Number" matInput formControlName="emailValue"
+                [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="subscriberEmail">
+            <mat-error>Please enter a valid email</mat-error>
+
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.userEmail">
+                    {{option.userEmail}}
+                </mat-option>
+
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+
+    <div class="addmemberbutton" fxLayout fxLayout.xs="column" fxLayoutAlign="center">
+        <button class="send-invite" mat-raised-button color="primary" (click)="onSendEmail()"
+            [disabled]="!emailGroup.valid">
+            Send Invitation
+        </button>
+    </div>
+</mat-menu>
+
+<mat-menu #subscriberList="matMenu">
+    <div *ngFor="let subscriber of boardSubscribers">
+        <button mat-menu-item>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <div fxLayout="row" fxLayoutAlign="space-around">
+                    <ngx-avatar size=30 [src]="subscriber.subscriberProfile" class="subscriber-avatar"></ngx-avatar>
+                    <div *ngIf="subscriber.subscriberStatus === 'online'; else offlinestatus"
+                        style="background-color: green; border-radius: 5px; height: 10px; width: 10px; bottom: -28px;left: -6px;position: relative;">
+                    </div>
+                    <ng-template #offlinestatus>
+                        <div
+                            style="background-color: red; border-radius: 5px; height: 10px; width: 10px; bottom: -28px;left: -6px;position: relative;">
+                        </div>
+                    </ng-template>
+
+                    <span style="padding-left: 5px;">{{subscriber.subscriberName}}</span>
+                </div>
+                <div>
+                    <mat-icon mat-icon-button style="padding-left: 10px; font-size: 19px;"
+                        (click)="onRemoveSubscriber(subscriber)">cancel</mat-icon>
+                </div>
+            </div>
+        </button>
+    </div>
+</mat-menu>

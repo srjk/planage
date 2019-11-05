@@ -1,0 +1,11 @@
+<!--Open dialogbox to take boardName as input-->
+<h1 mat-dialog-title>+ Create a board</h1>
+<form mat-dialog-content [formGroup]="myGroup">
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Enter board name" [(ngModel)]="boardName" maxlength="20" formControlName="boardName" [name]="boardName">
+        <mat-error>Enter board name of max-length 20 0f format [a-zA-Z0-9 ]</mat-error>
+    </mat-form-field>
+</form>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="flex-end">
+    <button mat-button [mat-dialog-close]="boardName" color="primary" [disabled]="!myGroup.valid">Add board</button>
+</div>

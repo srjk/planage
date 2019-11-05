@@ -1,0 +1,12 @@
+<!--Open dialogbox to take boardName as input-->
+<h1 mat-dialog-title>Add Rows to import</h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="outline">
+        <!-- <input matInput [(ngModel)]="boardName" placeholder="Enter board name"> -->
+        <textarea matInput [(ngModel)]="excelText" placeholder="Enter text from excel/csv to import mutiple data as rows" rows="10" cols="20"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="flex-end">
+    <button mat-button [mat-dialog-close]="excelText" color="primary">Add Rows</button>
+</div>
+

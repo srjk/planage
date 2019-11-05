@@ -1,0 +1,59 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.9)" size="medium" color="#fff" type="ball-clip-rotate">
+  <p style="color: white;">Loading, Please wait...</p>
+</ngx-spinner>
+
+<!--
+   Mat side navbar code that will contain product logo, link for create board and display all the existing board names.
+  -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+
+    <!--    Sidenav logo header which contains product logo and user profile name and email id-->
+    <div class="logoHeader">
+      <!--      <p>Planage</p>-->
+      <div class="user-avatar-container">
+        <ngx-avatar [src]="userProfile" class="user-avatar"></ngx-avatar>
+        <div class="user-info-container">
+          <p class="user-name">{{userName}}</p>
+          <p class="user-email">{{userEmail}}</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="line">
+
+    <mat-nav-list>
+      <br>
+      <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+
+      <!-- Link for create board -->
+      <a mat-list-item (click)="onCreateBoard()">
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Create Board</span>
+      </a>
+      <br>
+      <hr class="line">
+
+      <a mat-list-item *ngFor="let board of (boards$ | async)" [routerLink]="['/board']"
+        (click)="onOpenBoard(board.boardId)">
+        <span>{{board.boardName}}</span>
+      </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon" style="color: blue">menu</mat-icon>
+    </button>
+    <!--router outlet to change the view of main content-->
+    <router-outlet *ngIf="isCookiePresent && isUserDetailsLoaded"></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

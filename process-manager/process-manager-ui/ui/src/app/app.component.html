@@ -1,0 +1,12 @@
+<!--
+The app component is root content and this has only one child component as sidebar component which implements
+sidebar and main content.
+-->
+
+<!-- <app-sidebar></app-sidebar> -->
+
+<app-sidebar *ngIf="isCookiePresent; else login"></app-sidebar>
+
+<ng-template #login>
+  <app-login></app-login>
+</ng-template>
