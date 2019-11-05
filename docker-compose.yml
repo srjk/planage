@@ -35,7 +35,7 @@ services:
 #   SERVICES
 
   process:
-    image: docker.io/aparnachoubey/process-working-dev_process:0.3.5
+    image: docker.io/aparnachoubey/process_process:0.5.3
     # build:
     #   context: process-manager-ui
     #   dockerfile: Dockerfile
@@ -46,7 +46,7 @@ services:
 #    container_name: angularcontainer  # Container name
 
   process-manager-boot:
-     image: docker.io/aparnachoubey/process-working-dev_process-manager-boot:0.3.3
+     image: docker.io/aparnachoubey/process_process-manager-boot:0.5.2
     #  build:
     #   context: process-spring-boot
     #   dockerfile: Dockerfile
@@ -57,7 +57,7 @@ services:
        - mongodb
 
   process-nodejs:
-    image: docker.io/aparnachoubey/process-working-dev_process-nodejs:0.2.8
+    image: docker.io/aparnachoubey/process_process-nodejs:0.5.2
     # build:
     #   context: node
     #   dockerfile: Dockerfile
@@ -79,27 +79,27 @@ services:
       - discovery
 
   sprint-api:
-    image: docker.io/namanshrimali1/sprint_sprint-api:0.3.2
+    image: docker.io/bhavaniac/tests1_sprint-api:0.9.0
     ports:
       - 8085:8085
     depends_on:
       - discovery
 
-  sprint-ui:
-    image: docker.io/namanshrimali1/sprint_angular-ui:0.3.2
+  scrum:
+    image: docker.io/bhavaniac/tests1_scrum:0.9.0
     ports:
       - 8086:8086
     depends_on:
       - discovery
 
   sprint-nodejs:
-    image: docker.io/namanshrimali1/proflo-node:0.1.2
+    image: docker.io/namanshrimali1/proflo-node:0.3.1
     ports:
       - 3001:3001
 
 
   product-api:
-    image: docker.io/namanshrimali1/sprint_sprint-api:0.3.2
+    image: docker.io/bhavaniac/tests1_product-api:0.8.1
 #    build:
 #      context: ./product-api-service
 #      dockerfile: Dockerfile
@@ -108,8 +108,8 @@ services:
     depends_on:
       - discovery
 
-  product-ui:
-    image: docker.io/bhavaniac/tests1_angular-ui:0.3.1
+  agile:
+    image: docker.io/bhavaniac/tests1_agile:0.8.1
 #    build:
 #      context: process-manager-ui
 #      dockerfile: Dockerfile
