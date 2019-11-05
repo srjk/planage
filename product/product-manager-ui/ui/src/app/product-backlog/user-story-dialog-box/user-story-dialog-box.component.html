@@ -1,0 +1,65 @@
+<body>
+    <div class="header" mat-dialog-title>
+        <i class="material-icons" id="storefront">
+            storefront
+        </i>
+        <h1 class="story-name" mat-dialog-title>{{data[0].userStoryName}}</h1>
+        <button class="close-button" align= "end" (click)="onNoClick()" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <div *ngIf="showInformationView==true; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+
+        <form class="formGroup" [formGroup]="userStoryInformation">
+            <div class="descriptionPanel">
+                <div class="headerIcons">
+                    <i class="material-icons" id="notes">
+                        notes
+                    </i>
+                    <h4 id="description">Acceptance Criteria</h4>
+                </div>
+                <mat-form-field class="textarea" floatLabel="auto" appearance="outline">
+                    <textarea placeholder="Add a more detailed description." matTextareaAutosize matAutosizeMinRows=8
+                        matInput [(ngModel)]="data[0].description" formControlName="userStoryDescription"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="selection-buttons">
+                <h4 id="description">Add to story</h4>
+                <mat-form-field class="tshirtsize">
+                    <mat-label style="font-size: 100%">T-Shirt Size</mat-label>
+                    <mat-select [(value)]="data[0].tshirtSize">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let size of tShirtSizes" [value]="size">{{size}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button class="dependencies" mat-raised-button style="width: 100%" (click)="switchFormView()">Select
+                    Dependencies</button>
+            </div>
+        </form>
+        <div style="display: flex; justify-content :flex-start">
+            <mat-chip-list aria-label="Dependencies" *ngFor="let dependentStory of data[0].dependencies">
+                <mat-chip disabled>{{dependentStory.userStoryName}}</mat-chip>
+            </mat-chip-list>
+        </div>
+    </ng-template>
+
+    <ng-template #elseBlock>
+        <app-select-epics [disabledStories]="disabledStories" [alreadySelectedStories]="data[0].dependencies"
+            (goBack)="selectStories($event)">
+        </app-select-epics>
+    </ng-template>
+    </div>
+
+    <div mat-dialog-actions class="okayButon">
+        <div *ngIf="showInformationView==true; then showOkayButton else showConfirmButton"></div>
+        <ng-template #showOkayButton>
+            <button mat-raised-button [mat-dialog-close]="data[0]" cdkFocusInitial>OK</button>
+        </ng-template>
+        <ng-template #showConfirmButton>
+            <button mat-raised-button (click)= "switchFormView()">Confirm</button>
+        </ng-template>
+    </div>
+</body> 

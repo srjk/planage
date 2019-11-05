@@ -1,0 +1,18 @@
+{
+    "productId": 1,
+    "productName": "kanban",
+    "sprint":[
+        {
+            "sprintId":"1",
+            "sprintName":"Sprint1",
+            "taskCommitment":13,
+            "taskCompleted":6
+        },
+        {
+            "sprintId":"2",
+            "sprintName":"Sprint2",
+            "taskCommitment":10,
+            "taskCompleted":8
+        }
+    ]
+ }

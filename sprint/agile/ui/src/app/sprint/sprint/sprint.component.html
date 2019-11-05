@@ -1,0 +1,5 @@
+<span class="sprint">{{sprintData.sprintName}}</span>
+<div style="margin-right: 20px; width:100%">
+    <app-user-story-card (userStoryAdded)=userStoryAdded($event) (userStoryDeleted)=userStoryDeleted($event)
+        *ngFor="let userstory of sprintData.userstory" [sprintId]="sprintData.sprintId" [sprintName]="sprintData.sprintName" [userStoryData]="userstory" ></app-user-story-card>
+</div>

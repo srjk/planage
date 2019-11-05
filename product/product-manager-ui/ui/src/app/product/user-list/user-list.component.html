@@ -1,0 +1,26 @@
+<button mat-button [matMenuTriggerFor]="user">Invite</button>
+<mat-menu #user="matMenu" width="30px">
+        <form [formGroup]="myform">
+                <mat-form-field appearance="outline">
+                        <input formControlName="memberEmail" name="memberEmail" matInput type="text||email" [(ngModel)]="searchItem"
+                                (click)="$event.stopPropagation()" (onKeyUp)="onKeyUp()" placeholder="Search" required>
+                </mat-form-field>
+
+                <div *ngFor="let user of userList |filter:searchItem| slice:0:3">
+                        <button style="width: 200px; " mat-menu-item
+                                (click)="addUser(user.id,user.userName,user.userEmail)">
+                                <mat-grid-list cols="2" rowHeight="3:1">
+                                        <!-- <mat-grid-tile>
+                                                <ngx-avatar [style]="customStyle" size="30" name={{user.userName}}></ngx-avatar>
+                                        </mat-grid-tile> -->
+                                        <mat-grid-tile colspan="2">{{user.userName}}</mat-grid-tile>
+                                </mat-grid-list>
+                        </button>
+
+                </div>
+                <div class="wrapper">
+                        <button mat-raised-button color="primary" (click)="submit(myform.value);" class="button"
+                                [disabled]="myform.invalid|| myform.status==='INVALID'">Send invitation</button>
+                </div>
+        </form>
+</mat-menu>

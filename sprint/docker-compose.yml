@@ -1,0 +1,41 @@
+version: '3'
+services:
+  angular-ui:
+    build: agile
+    ports:
+      - 8086:8086
+    container_name: angularcontainer
+
+  mongodb:
+    image: mongo
+#    environment:
+#      - MONGO_INITDB_ROOT_USERNAME=root
+#      - MONGO_INITDB_ROOT_PASSWORD=pass
+    ports:
+      - 27017:27017
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  sprint-api:
+    build: api
+    ports:
+      - 8085:8085
+    depends_on:
+      - mongodb
+      - rabbitmq
+
+  product-nodejs:
+   #    image: docker.io/aparnachoubey/process_backend_process-nodejs:0.1.2
+   build:
+     context: kanban server
+     dockerfile: Dockerfile
+   ports:
+     - 3001:3001

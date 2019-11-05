@@ -1,0 +1,27 @@
+<div class="pagebg">
+    <div class="board">
+        <div class="sprint-bar">
+            <p class="sprint-no"> </p>
+        </div>
+    </div>
+
+
+    <div class="kanbanbg">
+
+        <!-- [list]="data" -->
+        <app-list *ngIf="data" [column]="data"></app-list>
+
+        <form *ngIf="tog" [formGroup]="listInformation" (keyUp.enter)=addList()>
+            <mat-form-field floatLabel="auto" appearance="outline" height="50px">
+                <!-- <input required matInput formControlName="listName" /> -->
+                <input formControlName="listName" matInput placeholder="Add List Name" value="">
+
+            </mat-form-field>
+        </form>
+        <button class="floatingButton" mat-mini-fab [ngStyle]="{'color':'gray'}" (click)="toggle()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <button mat-raised-button class="freeze-sprint">Freeze Sprints</button>
+</div>
+

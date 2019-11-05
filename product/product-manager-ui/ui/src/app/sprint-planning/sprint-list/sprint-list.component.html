@@ -1,0 +1,17 @@
+<div class="sprintView">
+    <div cdkDropListGroup style="display: flex; flex-direction: row">
+        <app-sprint *ngFor="let sprint of listOfSprints" [sprint]="sprint" (userStoryUpdated)="userStoryUpdated($event)" (dropEvent)="drop($event)" class="example-container"></app-sprint>
+    </div>
+    <div>
+        <form *ngIf="showInput" [formGroup]="newSprintInformation" (keyUp.enter)="addSprint()">
+            <mat-form-field floatLabel="auto" appearance="outline">
+                <input #listName required matInput formControlName="sprintName" />
+            </mat-form-field>
+        </form>
+    </div>
+</div>
+
+
+<button class="floatingButton" mat-fab [ngStyle]="{'color':'black'}" (click)="toggleInput()">
+    <mat-icon>add</mat-icon>
+</button>

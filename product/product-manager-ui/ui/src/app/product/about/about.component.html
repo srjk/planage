@@ -1,0 +1,56 @@
+<!-- <div class="container">
+<div>
+<h1 class="inline-block">{{productBacklog}}</h1>
+<div class="inline-block margin"><app-members-list></app-members-list></div>
+<div class="inline-block"><app-user-list></app-user-list></div>
+</div>
+<app-productBacklog-detail></app-productBacklog-detail>
+</div> -->
+
+<div class="container">
+    <div>
+        <h1 class="inline-block">About</h1>
+        <div class="inline-block margin">
+            <app-members-list class="inline-block" [teamList]="teamList" (removeTeam)="getTeamName($event)">
+            </app-members-list>
+        </div>
+        <div class="inline-block">
+            <app-user-list [userList]="userList" (addTeam)="getTeam($event)" (memberEmail)="getMemberEmail($event)">
+            </app-user-list>
+        </div>
+    </div>
+    <!-- <div class="display" *ngFor = "let productBacklog of productList">
+    <mat-card class="example-card">
+         <mat-card-header> -->
+            <!-- <mat-card-title>Description</mat-card-title> -->
+        <!-- </mat-card-header> -->
+        <!-- <mat-card-content> -->
+            <!-- <p>{{productBacklog.description}}</p> -->
+        <!-- </mat-card-content> -->
+    <!-- </mat-card>
+    <mat-card class="example-card"> -->
+        <!-- <mat-card-header> -->
+            <!-- <mat-card-title>Client</mat-card-title> -->
+        <!-- </mat-card-header>
+        <mat-card-content> -->
+            <!-- <p>{{productBacklog.client}}</p> -->
+        <!-- </mat-card-content> -->
+    <!-- </mat-card>
+    <mat-card class="example-card"> -->
+        <!-- <mat-card-header> -->
+            <!-- <mat-card-title>Deadline</mat-card-title> -->
+        <!-- </mat-card-header> -->
+        <!-- <mat-card-content> -->
+            <!-- <p>{{productBacklog.deadline| date:'yyyy-MM-dd'}}</p> -->
+        <!-- </mat-card-content> -->
+    <!-- </mat-card> -->
+    <!-- </div>  -->
+    <!-- <div style="display: block">
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType">
+            </canvas>
+      </div> -->
+      <app-statistics></app-statistics>
+</div>

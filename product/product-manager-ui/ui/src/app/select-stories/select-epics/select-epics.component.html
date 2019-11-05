@@ -1,0 +1,1 @@
+<app-select-user-stories *ngFor="let epic of epics"  (addStories)="addToSelectedStories($event)" (removeStories)="removeFromSelectedStories($event)" [productId]="productId" [epic]="epic" [disabledStories]="disabledStories" [alreadySelectedUserStories]="selectedStories"></app-select-user-stories>

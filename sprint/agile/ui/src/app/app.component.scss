@@ -1,0 +1,87 @@
+// body {
+//   font-family: "Lato", sans-serif;
+//   margin: 0px;
+// }
+// .sidenav {
+//   height: 100%;
+//   width: 200px;
+//   position: fixed;
+//   z-index: 1;
+//   top: 0;
+//   left: 0;
+//   background-color: rgb(93, 97, 107);
+//   overflow-x: hidden;
+//   padding-top: 20px;
+//   border-top-right-radius: 2%;
+//   border-bottom-right-radius: 2%;
+// }
+// .sidenav a {
+//   padding: 6px 6px 6px 32px;
+//   text-decoration: none;
+//   font-size: 20px;
+//   color: #ecf1f5;
+//   display: block;
+// }
+// .sidenav a:hover {
+//   background-color:  #ecf1f5;
+//   color: rgb(93, 97, 107);
+// }
+// .sidenav header {
+//   font-size: 25px;
+//   color: #ecf1f5;
+//   font-display: block;
+// }
+// .main {
+//   margin-left: 200px;
+// }
+// @media screen and (max-height: 450px) {
+//   .sidenav {
+//     padding-top: 15px;
+//   }
+//   .sidenav a {
+//     font-size: 18px;
+//   }
+// }
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 52px;
+}
+
+.sidenav .mat-toolbar {
+  background: #27192c;
+}
+
+.mat-drawer {
+  background: #27192c;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+  color: white !important;
+}
+
+.mat-toolbar.mat-primary {
+  background: #27192c;
+}
+span {
+  margin-left: 5%;
+}
+.user {
+  position:fixed;
+  bottom:16px;
+}
+.title{
+  position: fixed;
+  left:19px;
+}

@@ -1,0 +1,38 @@
+.display
+ display: flex
+ align-content: center
+ max-width: 35em
+
+.cardWrapper
+ overflow: hidden
+
+.cardWrapper:last-child
+ .cardWrapper:hover
+  overflow: visible
+
+
+.card
+ width: 2em
+ min-width: 2.5em
+ height: 3em
+ padding: 0.25em
+ display: flex
+ flex-direction: column
+ justify-content: center
+ align-items: center
+
+ .button
+  top: 50%
+
+.example-viewport 
+  height: 200px
+  width: 200px
+  border: 1px solid black
+
+.example-item 
+  height: 50px
+
+.scroll
+  width: 4em
+  height: .2em
+  overflow: scroll

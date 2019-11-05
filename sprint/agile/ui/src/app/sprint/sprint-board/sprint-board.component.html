@@ -1,0 +1,15 @@
+<div>
+    <span class="sprint">Plan your Sprint</span>
+</div>
+
+<!-- <div style="display: flex; flex-direction: row; width: 1000px;"> -->
+<div style="display: flex; flex-direction:row">
+
+    <app-sprint style="margin-top: 50px; margin-left: 30px; margin-bottom:30px" (userStoryAdd)=userStoryAdd($event)
+        (userStoryDelete)=userStoryDelete($event) *ngFor="let sprint of listOfSprints" [sprintData]="sprint">
+    </app-sprint>
+</div>
+<button mat-raised-button (click)=submit() [disabled]="dsableAddTask ? '' : null" class="confirm">Confirm</button>
+<!-- <div *ngIf= "dsableAddTask; then dontShow else show"></div>
+<ng-template #dontShow><button mat-raised-button (click)=submit() disabled="addSelectedUserStories()" class="confirm">Add Task</button> </ng-template>
+<ng-template #show><button mat-raised-button (click)=submit()  class="confirm">Add Task</button> </ng-template> -->

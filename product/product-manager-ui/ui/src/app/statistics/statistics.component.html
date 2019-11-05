@@ -1,0 +1,11 @@
+<ngx-spinner></ngx-spinner>
+<p>{{productName}}</p>
+<p id="message" style="font-size: 5em;color: black;text-align: center;"></p>
+<div style="display: block">
+    <canvas baseChart 
+    [data]="pieChartdata" 
+    [labels]="pieChartLabels" 
+    [chartType]="pieChartType"
+    chart-colours="colours">
+    </canvas>
+</div>

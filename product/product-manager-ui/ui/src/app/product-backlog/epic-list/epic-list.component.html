@@ -1,0 +1,44 @@
+<head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<div class= "body">
+        <h1>{{productName}}</h1>
+
+
+        <router-outlet></router-outlet>
+        <div style="display: flex; flex-direction: row;">
+  
+                <h3> Product Backlog</h3>
+        </div>
+        <mat-list>
+                <div *ngIf="showinput; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>
+                        <mat-list-item>
+                                <form [formGroup]="epicInformation" (keyUp.enter)="addEpic()">
+                                        <mat-form-field floatLabel="auto" style="width: 1000px !important;">
+                                                <input #epicName matInput formControlName="epicName" />
+                                        </mat-form-field>
+                                </form>
+                        </mat-list-item>
+                </ng-template>
+                <ng-template #elseBlock>
+                        <mat-list-item class="fakeListForEpics" (click)="toggleInput()">Add Epics + </mat-list-item>
+                </ng-template>
+
+                <mat-list-item *ngFor="let data of epicData | paginate: { itemsPerPage: 4,
+                                currentPage: p}" (click)=showEventDetail(data)>
+
+                        <h3 matLine> {{data.epicName}} </h3>
+
+                        <div *ngIf="data.prioritizedUserStories; then thenBlock else elseBlock "></div>
+                        <ng-template #thenBlock>{{data.prioritizedUserStories.length}}</ng-template>
+                        <ng-template #elseBlock>0</ng-template>
+
+                        <i class="material-icons">
+                                chevron_right
+                        </i>
+                </mat-list-item>
+                <pagination-controls class="paginator" (pageChange)="p = $event"></pagination-controls>
+        </mat-list>
+</div>

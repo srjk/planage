@@ -1,0 +1,34 @@
+<div *ngIf="showKanBanBoard; then showKanban else showFreezedStatus"></div>
+<ng-template #showKanban>
+  <mat-toolbar style="display: flex; justify-content: flex-end;">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="freezeSprint()">
+        <mat-icon>done_all</mat-icon>
+        <span>Freeze Sprint</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <div cdkDropList cdkDropListOrientation="horizontal" style="display: flex; flex-direction: row;"
+    (cdkDropListDropped)="drop($event)">
+    <app-column style="width: 300px; margin: 1%" class="example-list" *ngFor="let column of column" [column]="column"
+      [listOfColumnId]="listOfColumnId" id=column.id (triggerColumnDelete)="triggerColumnDelete($event)" [sprintId]= "sprintId" cdkDrag>
+    </app-column>
+    <div *ngIf="showInputBox; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <input type="text" placeholder="Enter list title" id="fname" name="fname" #columnName [(ngModel)]="nameOfColumn"
+        (keyUp.enter)="addColumn()" autocomplete="off">
+    </ng-template>
+    <ng-template #elseBlock>
+      <div class="addList" (click)="tranformToInputBox()">+ Add another list</div>
+    </ng-template>
+  </div>
+</ng-template>
+<ng-template #showFreezedStatus>
+  <h2>{{sprintName}} is closed</h2>
+  <h4 (click)="unFreezeSprint()">Re-Open</h4>
+  <h4>Plan a new sprint</h4>
+</ng-template>

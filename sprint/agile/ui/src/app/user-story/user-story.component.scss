@@ -1,0 +1,50 @@
+.example-card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  background-color: whitesmoke;
+  width: 40%;
+  margin-left:30%;
+  margin-right:30%
+}
+
+.flex-class{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+.taskbutton {
+  bottom: 16px;
+  right: 16px;
+  position: fixed;
+  text-decoration: none;
+  font-size: 15px;
+  color: #ecf1f5;
+  background-color: #27192C;
+
+}
+.userstory-list{
+  display: flex;
+  
+}
+.mat-grid-list{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  // width: 100%;
+}
+
+.delete-button{
+  padding-bottom: 0px;
+  padding-right: 0px;
+  margin-top:9px;
+}
+
+.mat-content{
+  display: flex;
+  flex-direction: row;
+  margin-bottom:5px; 
+  justify-content: space-between
+}
+
+

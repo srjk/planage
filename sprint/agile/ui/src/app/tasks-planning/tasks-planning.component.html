@@ -1,0 +1,74 @@
+<mat-card class="whole">
+  <mat-expansion-panel class="example-panel" *ngFor="let data of dataset$">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title">
+        {{data.userstoryName}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="panel-body">
+      <mat-list *ngFor="let taskData of data.task">
+      
+        <mat-list-item>Task - {{taskData.taskName}}</mat-list-item>
+        <mat-list-item>Assigned to - {{taskData.taskAssignedTo}}</mat-list-item>
+        <mat-list-item> Size - {{taskData.taskSize}} </mat-list-item>
+        <mat-list-item> Category -{{taskData.taskCategory}}</mat-list-item>
+        <button mat-button type="submit" class="add" (click)="deleteTask(data.userstoryId, taskData.taskId)">
+          <!-- <mat-icon aria-hidden="false">delete</mat-icon> -->
+        </button>
+
+      </mat-list>
+
+      <div class="example-list">
+        <div *ngIf="toggleInputBox; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+          <form [formGroup]="addTasks" (keyUp.enter)="addTask(data.userstoryId, addTasks.value)">
+           <div class="task">
+            <div>
+            <mat-form-field floatLabel="auto" appearance="outline">
+              <input required matInput formControlName="taskName" type="text" placeholder="Define the task." />
+            </mat-form-field>
+            </div>
+            <div>
+            <mat-form-field floatLabel="auto" appearance="outline">
+              <input required matInput formControlName="taskAssignedTo" placeholder="Task Assigned to">
+            </mat-form-field>
+            </div>
+           </div>
+            <div class="flex-task">
+              <div>
+                <label>Task Size :</label>
+              </div>
+              <div>
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" required formControlName="taskSize">
+                    <mat-button-toggle value="Small">Small</mat-button-toggle>
+                    <mat-button-toggle value="Medium">Medium</mat-button-toggle>
+                    <mat-button-toggle value="Large">Large</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </div>
+              </div>
+              <div>
+                <div class="flex-task">
+                  <div>
+                <label>Task Category :</label>
+                </div>
+                <div>
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" required
+                  formControlName="taskCategory">
+                  <mat-button-toggle value="Must">Must</mat-button-toggle>
+                  <mat-button-toggle value="Try">try</mat-button-toggle>
+                  <mat-button-toggle value="Impossible">Impossible</mat-button-toggle>
+                </mat-button-toggle-group>
+                </div>
+                </div>
+              </div>
+          </form>
+        </ng-template>
+        <ng-template #elseBlock>
+          <button mat-raised-button class="addtask" (click)="enableInputBox()" type="submit">
+            Add Task
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-card>

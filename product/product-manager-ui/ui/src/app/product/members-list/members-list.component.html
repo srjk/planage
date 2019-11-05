@@ -1,0 +1,47 @@
+<div *ngFor="let team of teamList, let i=index, let l=count" class="display">
+  <button *ngIf="i<3, else elseBlock" class="card" mat-button [matMenuTriggerFor]="menu">
+    <ngx-avatar [style]="customStyle" size="40" name={{team.memberName}}></ngx-avatar>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button style="width: 200px; height: 60px; " mat-menu-item>
+      <mat-grid-list cols="2" rowHeight="3:2">
+        <!-- <mat-grid-tile>
+          <ngx-avatar [style]="customStyle" size="40" name={{team.memberName}}></ngx-avatar>
+        </mat-grid-tile> -->
+        <mat-grid-tile colspan="2">{{team.memberName}}</mat-grid-tile>
+      </mat-grid-list>
+    </button>
+    <button mat-menu-item>View profile</button>
+    <button mat-menu-item (click)="deleteMember(team.memberId)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-menu>
+  <ng-template #elseBlock>
+    <button *ngIf="i==3" class="card" mat-button [matMenuTriggerFor]="teamMembers">
+      <ngx-avatar [style]="customStyle" size="40" value="{{l-3}}+"></ngx-avatar>
+    </button>
+    <mat-menu #teamMembers="matMenu">
+
+      <div *ngFor="let teams of teamList, let i=index">
+
+        <button mat-menu-item *ngIf="i>2" [matMenuTriggerFor]="menu1">
+          <ngx-avatar [style]="customStyle" size="40" name={{teams.memberName}}></ngx-avatar>
+        </button>
+        <mat-menu #menu1="matMenu">
+          <button style="width: 200px; height: 60px; " mat-menu-item>
+            <mat-grid-list cols="2" rowHeight="3:2">
+              <!-- <mat-grid-tile>
+                <ngx-avatar [style]="customStyle" size="40" name={{teams.memberName}}></ngx-avatar>
+              </mat-grid-tile> -->
+              <mat-grid-tile colspan="2">{{teams.memberName}}</mat-grid-tile>
+            </mat-grid-list>
+          </button>
+          <button mat-menu-item>View profile</button>
+          <button mat-menu-item (click)="deleteMember(teams.memberId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-menu>
+      </div>
+</mat-menu>
+</ng-template>
+</div>

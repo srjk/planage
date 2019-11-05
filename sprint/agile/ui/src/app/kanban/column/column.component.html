@@ -1,0 +1,35 @@
+<div class="example-list">
+    <div cdkDropList id={{column.columnId}} [cdkDropListData]="column.tasks" (cdkDropListDropped)="drop($event)"
+        [cdkDropListConnectedTo]="listOfColumnId">
+
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <div>
+                <h1>{{column.columnName}}</h1>
+            </div>
+            <div style="display: flex; justify-content: flex-end;">
+                <button mat-icon-button [matMenuTriggerFor]="menu" style="display: flex; align-items: center;">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <div *ngIf="column.tasks.length; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                        <button mat-menu-item disabled>
+                            <mat-icon disabled>delete_outline</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <button mat-menu-item (click)="deleteColumn()">
+                            <mat-icon>delete_outline</mat-icon>
+                            <span>Delete</span>
+                        </button>
+
+                    </ng-template>
+                </mat-menu>
+            </div>
+        </div>
+        <div *ngFor="let task of column.tasks" cdkDrag class="example-box">
+            {{task.taskName}}
+        </div>
+    </div>
+</div>

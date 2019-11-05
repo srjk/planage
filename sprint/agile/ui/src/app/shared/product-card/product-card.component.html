@@ -1,0 +1,24 @@
+
+<div class="productCards" (click)=viewSprint()>
+
+    <mat-card class="example-card" (click)=viewSprint()>
+        <div class="title">
+            <div class="avatar">
+                <ngx-avatar size="35" name={{data.productName}}></ngx-avatar><br>
+            </div>
+            <div class="prodname">
+                <h5 style="margin-top: 4px;">{{data.productName}}</h5>
+            </div>            
+        </div>
+    <div class="showDetails">
+        <div class="description">
+            <p class="card-details">Client:  {{data.client}}</p>
+            <p class="card-details">Deadline:  {{data.deadline| date}}</p>
+        </div>
+        <div>
+            <mat-icon class="icon" (click)=viewSprint()>arrow_forward</mat-icon>
+        </div>
+    </div>
+    </mat-card>
+
+</div>

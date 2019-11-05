@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="example-toolbar" fixedInViewport>
+    <span>Planage</span>
+    <div class="avatar">
+            <button mat-button [matMenuTriggerFor]="menu">
+                    <ngx-avatar [style]="customStyle" size="40" name={{name}}></ngx-avatar>
+            </button>
+                <mat-menu #menu="matMenu">
+                    <!-- <button style="width: 200px; height: 60px; " mat-menu-item>
+                      <mat-grid-list cols="2" rowHeight="3:2">
+                        <mat-grid-tile colspan="2">{{name}}</mat-grid-tile>
+                        <mat-grid-tile colspan="2">{{userEmail}}</mat-grid-tile>
+                      </mat-grid-list>
+                    </button> -->
+                    <span mat-menu-item>{{name}}</span>
+                    <!-- <span mat-menu-item>{{userEmail}}</span> -->
+                </mat-menu>
+    </div>
+</mat-toolbar>
+
+<div class="main">
+    <router-outlet></router-outlet>
+</div>

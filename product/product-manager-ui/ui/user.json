@@ -1,0 +1,25 @@
+{
+	"user":[
+		{
+"id":1,
+"user_name":"Bhavani A C",
+"user_email":"bhavaniac145@gmail.com"
+},
+{
+	"id":2,
+	"user_name":"Naman S",
+	"user_email":"naman@gmail.com"
+	},
+{
+	"id":3,
+	"user_name":"Apurva Karn",
+	"user_email":"apurva@gmail.com"
+	},
+{
+	"id":4,
+	"user_name":"Purvi Sharma",
+	"user_email":"purvi@gmail.com"
+	}
+	
+]
+}

@@ -1,0 +1,31 @@
+<mat-expansion-panel *ngFor="let userstory of data.user_story">
+                <mat-expansion-panel-header>
+                    <mat-panel-title> {{userstory.user_story_name}}</mat-panel-title>
+                    <mat-panel-description>Divide the userstory to smaller tasks if needed.
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!-- <mat-form-field>
+                    <input matInput formControlName="taskName" placeholder="Define the task">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="taskAsignedTo" placeholder="Task Assigned to">
+                </mat-form-field> -->
+                <div>
+                    <label>Task Size</label>
+                    <mat-radio-group formControlName="taskSize">
+                        <mat-radio-button value="small">Small</mat-radio-button>
+                        <mat-radio-button value="medium">Medium</mat-radio-button>
+                        <mat-radio-button value="large">Large</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div>
+                    <label>Task Category</label>
+                    <mat-radio-group formControlName="taskCategory">
+                        <mat-radio-button value="must">Must</mat-radio-button>
+                        <mat-radio-button value="try">Try</mat-radio-button>
+                        <mat-radio-button value="impossible">Impossible</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </mat-expansion-panel><mat-expansion-panel *ngFor="let userstory of data.user_story">
+                <mat-expansion-panel-header>
+                    <mat-panel-title> {{userstory.user_story_name}}</mat-panel-title>

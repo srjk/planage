@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Create New Product</h1>
+<div mat-dialog-content>
+  <form fxLayout="row" [formGroup]="productInformation">
+    <div class="descriptionPanel">
+      <div class="headerIcons">
+        <i class="material-icons" id="notes">
+          notes
+        </i>
+        <p id="description">Product Information</p>
+      </div>
+      <mat-form-field floatLabel="auto" appearance="outline">
+        <input placeholder="Product Name" matInput  cdkFocus autocomplete="off" formControlName="productName">
+      </mat-form-field>
+
+      <mat-form-field floatLabel="auto" appearance="outline">
+        <input placeholder="Client" matInput  autocomplete="off" [(ngModel)]="data.client" formControlName="client">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+          <input matInput type="date" placeholder="Deadline" required formControlName="deadline"/>
+        </mat-form-field>
+
+      <mat-form-field class="textarea" floatLabel="auto" appearance="outline" >
+        <textarea style= "resize: none" formControlName="description" placeholder="Add a more detailed description."  matInput></textarea>
+      </mat-form-field>
+
+    </div>
+
+    <div class="teamMemberBox">
+      <div class="headerIcons">
+        <i class="material-icons" id="notes">
+          people_alt
+        </i>
+        <p id="description"> Assign Team Members</p>
+      </div>
+      <div>
+        <mat-form-field floatLabel="auto" appearance="outline">
+          <input placeholder="Email address or name" matInput style="font-size: 15px" >
+        </mat-form-field>
+      </div>
+      <div class="teamMemberList">
+          <p>Selected team members are shown here</p>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions style="display: flex; justify-content: flex-end">
+  <button mat-raised-button color="primary" [disabled]= "productInformation.invalid" (click)="closeDialogBox()">Add</button>
+</div>

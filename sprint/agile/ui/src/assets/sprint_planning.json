@@ -1,0 +1,32 @@
+{
+	"sprint_planning": [
+		{
+			"sprint_id": 1,
+			"sprint_name": "frontend",
+			"user_story": [
+				{
+					"user_story_id": 11,
+					"user_story_name": "homePage",
+					"user_story_description": "Build the Home Page for the website",
+					"task": [
+						{
+							"task_id": 111,
+							"task_name": "Add hero image",
+							"task_assigned_to": "Satyan",
+							"task_size": "small",
+							"task_category": "must"
+						}
+					]
+				},{
+					"user_story_id": 12,
+					"user_story_name": "loginPage",
+					"user_story_description": "Build the Login Page for the website"
+				},{
+					"user_story_id": 13,
+					"user_story_name": "aboutUsPage",
+					"user_story_description": "Build the About-Us Page for the website"
+				}
+			]
+		}
+	]
+}	

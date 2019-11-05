@@ -1,0 +1,38 @@
+<!-- <mat-card matTooltip={{productName}} (click)="goToAboutPage()" class="example-card ">
+  <mat-card-header> -->
+    <!-- <div mat-card-avatar>
+      <ngx-avatar [style]="customStyle" size="50" name={{productName}}></ngx-avatar>
+    </div> -->
+    <!-- <mat-card-title class="text">{{productName}}</mat-card-title> -->
+    <!-- <mat-card-subtitle class="text">{{client}}</mat-card-subtitle> -->
+  <!-- </mat-card-header> -->
+  <!-- <mat-divider></mat-divider> -->
+  <!-- <mat-card-content>
+      <p>Description: 
+       {{description}}
+      </p>
+    </mat-card-content> -->
+    <!-- <mat-card-actions>
+        <button mat-icon-button class="align">
+            <mat-icon color="#a6a6a6">star</mat-icon>
+          </button>
+  </mat-card-actions> -->
+<!-- </mat-card> -->
+
+<mat-card class="example-card" (click)="goToAboutPage()">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <ngx-avatar [style]="customStyle" size="40" name={{productName}}></ngx-avatar>
+        </div>
+      <mat-card-title class="text">{{productName}}</mat-card-title>
+      <mat-card-subtitle><h4>{{client}}</h4></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngFor="let team of teamList, let i=index, let l=count" class="teamMembers">
+            <div *ngIf="i<3, else elseBlock" class="card" mat-div>
+              <ngx-avatar [style]="customStyleForTeam" size="40" name={{team.memberName}}></ngx-avatar>
+            </div>
+        </div>
+    </mat-card-content>
+  </mat-card>
+  

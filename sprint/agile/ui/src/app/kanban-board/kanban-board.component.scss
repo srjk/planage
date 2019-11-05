@@ -1,0 +1,53 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.kanbanbg {
+  // background-color: snow;
+  max-width: auto;
+  width: auto;
+  padding: 3rem;
+  opacity: 0.8;
+  display: flex;
+  flex-wrap: nowrap;
+//   overflow-x: auto !important;
+  position: relative;
+  height: 100vh;
+}
+.appname {
+  font-size: 28px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.sprint-bar {
+  opacity: 0.7;
+  padding: 1px 1px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 0%;
+}
+.sprint-no {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.formfield {
+  display: flex;
+  flex-direction: row;
+}
+
+// .material-icons{
+//     color: #004b9b;
+
+// }
+
+.freeze-sprint {
+    position: fixed;
+    top:16px;
+    right:24px
+
+
+}
+.mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, 
+.mat-raised-button.mat-accent{
+  background-color:#490f5c;
+}

@@ -1,0 +1,30 @@
+<mat-list>
+    <h4 style="line-height: 150%;text-align: justify;">{{epicName}}</h4>
+    <div *ngIf="displayStories.length" class="name" fxLayout fxLayout.xs="column" fxLayoutAlign="center"
+        fxLayoutGap="10px" fxLayoutGap.xs="0">
+        <div fxFlex>User Story Name</div>
+        <div fxFlex="20.5%">Started at</div>
+        <div fxFlex="10%">T-Shirt Size</div>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngIf="toggleInputBox; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <mat-list-item>
+            <form [formGroup]="userStoryInformation" (keyUp.enter)="addUserStory()">
+                <mat-form-field floatLabel="auto" style="width: 1000px !important;">
+                    <input #userStoryName matInput formControlName="userStory" />
+                </mat-form-field>
+            </form>
+        </mat-list-item>
+
+    </ng-template>
+    <ng-template #elseBlock>
+        <mat-list-item class="fakeListForEpics" (click)="enableInputBox()">Add User Stories + </mat-list-item>
+    </ng-template>
+
+    <mat-list-item class="userStoryList" *ngFor="let story of displayStories">
+        <app-user-story style="width: 100%" (openStoryDialogBox)="populateSelectedUserStory($event)"
+            (addToPriority)="addPriority($event)" (removeFromPriority)="deletePriority($event)" [userStoryData]="story">
+        </app-user-story>
+    </mat-list-item>
+</mat-list>

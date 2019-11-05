@@ -1,0 +1,18 @@
+<div *ngFor="let data of dataset$" class="flex-class">
+  <mat-card class="example-card">
+    <mat-card-content class="mat-content">
+      <div>
+        <mat-card-title>{{data.userstoryName}}</mat-card-title>
+      </div>
+      <div class="delete-button">
+        <mat-icon (click)="deleteUserstory(data.userstoryId)">delete</mat-icon>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+
+<a routerLink="/taskplans">
+  <button mat-raised-button class="taskbutton" mat-button>Add Task</button>
+</a>

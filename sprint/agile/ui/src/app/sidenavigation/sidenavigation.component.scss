@@ -1,0 +1,105 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 172px;
+}
+
+.sidenav .mat-toolbar {
+  background:#24344c;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.mat-drawer {
+  background: #3d2645;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+  color: white !important;
+}
+
+.mat-toolbar.mat-primary {
+  background: #27192c;
+}
+span {
+  margin-left: 5%;
+}
+.menu {
+  position: fixed;
+  top: 10px;
+}
+
+.title {
+  color: white;
+  font-family:'Varela Round', sans-serif;
+  font-size: 1.5em;
+  margin-top: 39%;
+}
+
+.nav-list {
+  margin-top: 51%;
+  margin-left:15%
+}
+
+
+
+.sidenav-container
+
+ { background-color: #FFFFFF
+ }
+
+.logoHeader
+ { height: 30%;
+   padding: 8%;
+   margin-right:20%
+ }
+
+::ng-deep .avatar-container
+    {margin: 30% auto 0 auto;
+    position: relative;
+}
+.user-name
+  {color: white;
+  margin: 20px auto 0 auto;
+  text-align: center
+}
+.user-email
+ { color: lightblue;
+  margin: 5px auto 0 auto;
+  font-size: 14px;
+  text-align: center
+}
+.sidenav
+  {width: 200px;
+  background-color: #24344c;
+}
+// span
+// {  color: lightgrey
+// }
+// .mat-icon
+// {  color: rgba(211,211,211, 0.7)
+// }
+// ::ng-deep mat-nav-list
+// {  height: 60%
+// }
+.line
+{  background-color: rgba(211,211,211,0.2);
+  margin: 0 5px
+}
+// .mat-nav-list a span
+//   {margin-left: 5px;
+//   color: rgba(211,211,211, 0.7)
+// }

@@ -1,0 +1,74 @@
+// :host{
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: flex-start;
+  
+// }
+    
+.product{
+   display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.prod{
+  font-size: 25px;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  font-family: 'Varela Round', sans-serif;
+
+}
+
+.user{
+  position: fixed;
+  right:16px;
+  top:9px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color:#2a5078;
+  height:50px
+}
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+@media(max-width: 600px) {
+  :host{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .gif{
+    width: 200;
+    height: 400px;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+   
+}

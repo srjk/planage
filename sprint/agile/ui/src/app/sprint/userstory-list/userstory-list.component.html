@@ -1,0 +1,94 @@
+<div class="panel">
+  <mat-expansion-panel class="example-panel" *ngFor="let data of selectedUserStoryData ">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title" matLine>
+       <div matLine>{{data.userstoryName}}</div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="panel-body">
+      <mat-list *ngFor="let taskData of data.task">
+
+        <div class="taskname">
+          <div>{{taskData.taskName}}</div>
+          <div>
+            <!-- <button mat-button type="submit" (click)="deleteTask(data.userstoryId, taskData.taskId)">
+              <mat-icon aria-hidden="false" class="delete">delete</mat-icon>
+            </button> -->
+          </div>
+        </div>
+        <div class="tasks">
+          <div>Assigned To - {{taskData.taskAssignedTo}}</div>
+          <div> Size - {{taskData.taskSize}} </div>
+          <div> Category -{{taskData.taskCategory}}</div>
+        </div>
+        <hr>
+
+      </mat-list>
+
+      <div class="example-list">
+        <div *ngIf="toggleInputBox; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+          <form [formGroup]="addTasks" (ngSubmit)="addTask(data.userstoryId, addTasks.value)">
+            <span class="details">Enter the task details</span>
+
+            <div class="task">
+              <div>
+                <mat-form-field floatLabel="auto" appearance="outline">
+                  <input class="tasklist" required matInput formControlName="taskName" type="text" placeholder="Define the task." />
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field floatLabel="auto" appearance="outline">
+                  <input required matInput formControlName="taskAssignedTo" 
+                  placeholder="Task Assigned to" [matAutocomplete]="auto">
+                </mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of options" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+            <div class="addtaskdetails">
+              <div class="flex-task">
+                <div>
+                  <label>Task Size :</label>
+                </div>
+                <div>
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" required formControlName="taskSize">
+                    <mat-button-toggle value="Small">Small</mat-button-toggle>
+                    <mat-button-toggle value="Medium">Medium</mat-button-toggle>
+                    <mat-button-toggle value="Large">Large</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </div>
+              </div>
+              <div>
+                <div class="flex-task">
+                  <div>
+                    <label>Task Category :</label>
+                  </div>
+                  <div>
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" required
+                      formControlName="taskCategory">
+                      <mat-button-toggle value="Must">Must</mat-button-toggle>
+                      <mat-button-toggle value="Try">Try</mat-button-toggle>
+                      <mat-button-toggle value="Stretch">Stretch</mat-button-toggle>
+                    </mat-button-toggle-group>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button mat-raised-button class="addtask" [disabled]="addTasks.status==='INVALID'" type="submit">Add</button>
+          </form>
+        </ng-template>
+        <ng-template #elseBlock>
+          <button mat-raised-button class="addtask" (click)="enableInputBox()" type="submit">
+            Add Task
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</div>
+
+<button mat-raised-button class="start-sprint" (click)="start()">Start</button>

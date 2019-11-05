@@ -1,0 +1,183 @@
+.example-panel {
+  margin-top: 3%;
+  padding: 10%;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 40em;
+  height: auto;
+  padding: 10px;
+  background-color: white;
+  border-left: 3px solid darkblue;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.taskname {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 2%;
+}
+.details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 7%;
+}
+.mat-expansion-indicator::after {
+  transform: rotate(-45deg) !important;
+}
+.btn {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ecf1f5;
+  display: block;
+  .addtask {
+    z-index: 10;
+  }
+}
+.panel-body {
+  padding: 0px;
+  background-color: whitesmoke;
+  // opacity: 0.8;
+  border-radius: 5px;
+}
+
+.panel {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.whole {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title {
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 19px;
+}
+
+.add {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: 85%;
+  width: 5%;
+  bottom: 40px;
+}
+
+.start-sprint{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  font-size: 16px;
+  
+}
+
+.addtask {
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.task {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.mat-form-field {
+  width: 250px;
+}
+
+// .flex-task{
+//   margin-left:2%;
+//   margin-top:2%;
+
+// }
+.addtaskdetails {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.delete {
+  font-size: 20px;
+}
+
+@media (max-width: 600px) {
+  .example-panel {
+    width: 20em;
+  }
+  .addtask {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+  .panel {
+    width: 90%;
+    margin-left: 5%;
+    margin-right:5%;
+  }
+  .task{
+    width:20%
+  }
+ input.tasklist{  
+    width: 180px !important
+
+}
+.addtaskdetails {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.task {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+}
+.mat-form-field-flex {
+  width: 10% !important
+}
+
+}

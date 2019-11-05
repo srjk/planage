@@ -1,0 +1,52 @@
+<div>
+    <h4>Leader Board</h4>
+
+</div>
+
+<!-- <div *ngFor="let member of leaderBoardData.teamMember">
+    <mat-card class="example-card">
+        <div class="flex-card">
+            <div>
+                <ngx-avatar size="35" name={{member.taskAssignedTo}} (click)="openCalendar(data)"></ngx-avatar>
+            </div>
+            <div>
+                <mat-card-header>
+                    <mat-card-title class="header">{{member.taskAssignedTo}}</mat-card-title>
+                </mat-card-header>
+
+            </div>
+        </div>
+
+
+        <mat-card-content>
+            <p>Must Task: {{member.taskMust}}</p>
+            <p>Try Task: {{member.taskTry}}</p>
+            <P>Strech Task: {{member.taskStretch}}</P>
+
+        </mat-card-content>
+
+    </mat-card>
+</div> -->
+
+<div *ngFor="let member of leaderBoardData.teamMember" class="card-space">
+    <mat-card class="flex-list">
+        <div class="flex-avatar">
+            <div>
+                <!-- <ngx-avatar size="35" bgColor=darkblue name={{member.taskAssignedTo}} class="avatar"></ngx-avatar> -->
+
+            </div>
+            <div class="name">
+                <span class="header">{{member.taskAssignedTo}}</span>
+
+            </div>
+
+        </div>
+
+        <span class="task-category"> Must: {{member.taskMust}} </span>
+        <span class="task-category">Try: {{member.taskTry}} </span>
+        <span class="task-category">Stretch: {{member.taskStretch}}</span>
+
+    </mat-card>
+</div>
+
+

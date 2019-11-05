@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <!-- <span class="title">Planage</span> -->
+      <div class="logoHeader">
+        <ngx-avatar name={{userEmail}} class="avatar"></ngx-avatar>
+        <p class="user-email">{{userEmail}}</p>
+      </div>
+    </mat-toolbar>
+    <mat-nav-list class="nav-list">
+      <hr class="line">
+
+      <!-- <a mat-list-item routerLink="sprints" style="color:white">Plan Sprints</a> -->
+      <a mat-list-item routerLink="currentsprint" style="color:white">Current Sprint</a>
+      <a mat-list-item routerLink="currentsprint" style="color:white">Freezed Sprints</a>
+      <a mat-list-item routerLink="statistics" style="color:white">Sprint Metrics</a>
+      <a mat-list-item routerLink="metrix" style="color:white">Velocity Chart</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon" class="menu">menu</mat-icon>
+    </button>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

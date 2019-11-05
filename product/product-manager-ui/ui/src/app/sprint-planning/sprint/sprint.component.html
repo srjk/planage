@@ -1,0 +1,8 @@
+<h3>{{sprint.sprintName}}</h3>
+
+<div cdkDropList id= {{sprint.sprintId}} [cdkDropListData]="sprint.userStories" class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <app-story class="example-box" *ngFor="let userStory of sprint.userStories" [userStory]="userStory" cdkDrag>
+    </app-story>
+    <a cdkDrag (click)=addUserStories() [cdkDragDisabled]="true">+ Add stories</a>
+</div>

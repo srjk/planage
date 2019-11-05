@@ -1,0 +1,32 @@
+.card {
+  // display: flex;
+  // // height: inherit;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  width: 100%;
+  border-left: 4px solid darkblue;
+  // word-wrap:break-word;
+  
+  
+}
+.wrap{
+  word-wrap:break-word;
+  padding-top:2px;
+}
+.user-story {
+    width:100%;
+    margin-left: 25%;
+    margin-right:25%;
+}
+// .blue
+// {
+//     color: darkblue;
+// }
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+// .blue {
+//     fill:darkblue;
+// }
+:ng-deep .mat-list .mat-line{
+    word-wrap:break-word;
+   white-space: pre-wrap;
+  }

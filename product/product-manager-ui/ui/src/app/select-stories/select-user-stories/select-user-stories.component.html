@@ -1,0 +1,17 @@
+<mat-accordion style="margin: 2%;">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{epicName}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-user-story-checklist *ngFor="let story of displayStories" [story]="story"
+            [selectedStoriesFromEpic]="alreadySelectedUserStories" [disabledStories]="disabledStories"
+            (selectUserStory)="addToSelections($event)" (deselectUserStory)="removeFromSelections($event)">
+        </app-user-story-checklist>
+
+        <button mat-raised-button (click)=loadMoreStories()>Load More</button>
+
+        <div style="text-align: center" *ngIf="checked== false && nothingToShow== true"> No More User Stories !! </div>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,53 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "product_name": "Planage",
+      "description": "Event managing application",
+      "client": "stackroute",
+      "deadline": "2019-08-09T10:01:46.475Z",
+      "teams": [
+        {
+          "member_id": 1,
+          "user_id":1,
+          "member_name": "Bhavani A C"
+        },
+        {
+          "member_id": 2,
+          "user_id":2,
+          "member_name": "Naman S"
+        },
+        {
+          "member_id": 3,
+          "user_id":3,
+          "member_name": "Apurva Karn"
+        },
+        {
+          "member_id": 4,
+          "user_id":4,
+          "member_name": "Purvi Sharma"
+        },
+        {
+          "member_id": 5,
+          "user_id":5,
+          "member_name": "Akshata A"
+        },
+        {
+          "member_id": 6,
+          "user_id":6,
+          "member_name": "Ajeet C"
+        },
+        {
+          "member_id": 7,
+          "user_id":7,
+          "member_name": "Mike Roy"
+        },
+        {
+          "member_id": 8,
+          "user_id":8,
+          "member_name": "Rike Moy"
+        }
+      ]
+    }
+  ]
+}

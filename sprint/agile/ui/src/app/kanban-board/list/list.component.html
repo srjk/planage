@@ -1,0 +1,51 @@
+<div class="horizon" style="background-color: gray" >
+  <div class="board-columns" *ngFor="let l of column"  >
+    <div class="example-container">
+      <mat-card class="listTitle">
+        <div class="colnametext">
+          <mat-form-field>
+            <input matInput value="{{l.columnName}}">
+          </mat-form-field>
+        </div>
+        <!-- <div> -->
+          <mat-menu #appMenu="matMenu">
+              <div *ngIf="l.tasks.length!=0; then thenBlock else elseBlock"></div>
+              <ng-template #thenBlock> <button disabled mat-menu-item (click)="deletecol(l.id)">delete</button></ng-template>
+              <ng-template #elseBlock> <button mat-menu-item (click)="deletecol(l.id)">delete</button></ng-template>
+           
+            <!-- <button mat-menu-item>add</button> -->
+          </mat-menu>
+        <!-- </div> -->
+        <div>
+          <button mat-button class="material-icons" style="background-color: transparent" [matMenuTriggerFor]="appMenu">
+            <mat-icon class="delete">more_vert</mat-icon>
+          </button>
+        </div>
+      </mat-card> 
+      <div cdkDropList id="{{l.id}}" [cdkDropListData]="l.tasks" [cdkDropListConnectedTo]="connectedList"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of l.tasks" cdkDrag>
+          <div>{{item.taskName}}</div>
+          <!--{{item.task_name}}-->
+          
+          <div class="lable">
+                 <mat-icon class="[(item.taskCategory)]"><i class="material-icons">
+                     label
+                     </i></mat-icon>
+            <!--     <mat-icon class="try"><i class="material-icons">
+                     label
+                    </i></mat-icon>
+                  <mat-icon class="stretch"><i class="material-icons">
+                     label
+                     </i></mat-icon>  -->
+            <mat-icon style="font-size: 18px">{{item.taskTshirtSize}}</mat-icon>
+          </div>
+          <div class="avatar">
+              <ngx-avatar bgColor="gray" fgColor="black" size="30" name="{{item.taskAssignedTo}}" value="75%">
+              </ngx-avatar>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

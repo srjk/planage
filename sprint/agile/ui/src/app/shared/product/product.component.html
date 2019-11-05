@@ -1,0 +1,16 @@
+<!-- <span class="title">Your Products</span> -->
+<!-- <app-sidenavigation></app-sidenavigation> -->
+
+<div class="topnav">
+    <a href="#">
+        <ngx-avatar size="30" name={{userEmail}} class="user"></ngx-avatar>
+    </a>
+
+</div>
+
+
+<div class="prod">Products</div>
+<div class="product">
+    <app-product-card *ngFor="let data of productData" [data]="data" (viewSprintData)=sprintData($event)>
+    </app-product-card>
+</div>

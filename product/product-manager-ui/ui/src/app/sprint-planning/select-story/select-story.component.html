@@ -1,0 +1,19 @@
+<div class="body">
+    <div class="header">
+        <i class="material-icons" id="storefront">
+            storefront
+        </i>
+        <h1 class="story-name" mat-dialog-title>{{data.sprintName}}</h1>
+        <button align="end" (click)="onNoClick()" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <mat-dialog-content>
+        <app-select-epics [alreadySelectedStories]="data.userStories" (goBack)="addUserStories($event)">
+        </app-select-epics>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Okay</button>
+    </mat-dialog-actions>
+</div>

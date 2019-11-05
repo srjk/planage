@@ -1,0 +1,57 @@
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav #drawer class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <div *ngIf="hideText == false; then showFull else showHalf"></div>
+    <ng-template #showFull>
+        <mat-toolbar style="color: white;" class="productDetail">
+            <ngx-avatar [style]="customStyle" size="150" name={{selectedProductData.productName}}></ngx-avatar>
+            {{selectedProductData.productName}}
+          </mat-toolbar>
+    </ng-template>
+    <ng-template #showHalf>
+        <mat-toolbar style="color: white;" style="margin-top: 100px; margin-bottom: 100px;">
+            <ngx-avatar [style]="customStyle" size="35" name={{selectedProductData.productName}}></ngx-avatar>
+          </mat-toolbar>
+    </ng-template>
+    <mat-nav-list>
+      <a style="color: white;" mat-list-item routerLink="/dashBoard">
+        <i class="material-icons">
+          dashboard
+        </i><span *ngIf="hideText == false">Dashboard</span></a>
+      <a style="color: white;" mat-list-item routerLink="about">
+          <i class="material-icons">
+              info
+              </i>
+              <span *ngIf="hideText == false"> About</span>
+      </a>
+      <a style="color: white;" mat-list-item routerLink="backlog">
+          <i class="material-icons">
+              dynamic_feed
+              </i> <span *ngIf="hideText == false">Backlog</span>
+            </a>
+      <a style="color: white;" mat-list-item routerLink="sprintplan">
+        <i class="material-icons">
+          table_chart
+        </i> <span *ngIf="hideText == false">Sprint Plan</span></a>
+      <a style="color: white;" mat-list-item routerLink="statistics">
+        <i class="material-icons">
+          pie_chart
+        </i>
+        <span *ngIf="hideText == false">Statistics</span>
+      </a>
+      <a style="color: white;" mat-list-item routerLink="roadmap">
+        <i class="material-icons">
+          timeline
+        </i><span *ngIf="hideText == false">Product Roadmap</span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

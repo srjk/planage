@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+        <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Epic Title</mat-card-title>
+                <mat-card-subtitle>Status of the epic</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content *ngIf="!collapsed">
+                Top priority user story to be set here
+        </mat-card-content>
+        <mat-card-actions>
+                <!-- <span class="mat-expansion-indicator ng-tns-c14-2 ng-trigger ng-trigger-indicatorRotate ng-star-inserted"
+                        style="transform: rotate(0deg);" (click)="collapsed=true"></span>
+                <span class="mat-expansion-indicator ng-tns-c14-2 ng-trigger ng-trigger-indicatorRotate ng-star-inserted"
+                        style="transform: rotate(180deg);" (click)="collapsed=false"></span>
+              -->
+             
+                        <button mat-raised-button (click)="collapsed=true" color="primary">Collapse card content
+            </button> <button mat-raised-button (click)="collapsed=false" color="accent">Uncollapse card
+                    content</button> 
+
+                    
+        </mat-card-actions>
+</mat-card>

@@ -1,0 +1,6 @@
+<div *ngFor="let task of data.task">
+    {{task.taskId}}
+    {{task.taskName}}
+    {{task.taskAssignedTo}}
+</div>  
+  <button mat-raised-button (click)=addTask()>Add Task</button>

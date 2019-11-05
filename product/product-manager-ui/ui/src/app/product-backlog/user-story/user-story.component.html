@@ -1,0 +1,36 @@
+<div class="body">
+    <div class="icon">
+        <div *ngIf="isPrioritized; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+
+            <i class="material-icons" (click)=togglePriority() [ngStyle]="{'color':'#fab700'}">
+                star
+            </i>
+
+        </ng-template>
+        <ng-template #elseBlock>
+            <i class="material-icons" (click)=togglePriority() [ngStyle]="{'color':'#605757'}">
+                star_border
+            </i>
+        </ng-template>
+    </div>
+    <div class="name" (click)="openStoryDetails()" fxLayout fxLayout.xs="column" fxLayoutAlign="center"
+        fxLayoutGap="10px" fxLayoutGap.xs="0">
+        <div fxFlex matLine>{{userStoryData.userStoryName}}</div>
+        <div *ngIf="userStoryData.startDate; then showDate else hideDate"></div>
+        <ng-template #showDate>
+            <div fxFlex="10%">{{userStoryData.startDate}}</div>
+            <div fxFlex="10%">{{userStoryData.percentCompleted}}</div>
+        </ng-template>
+        <ng-template #hideDate>
+            <div fxFlex="25%">Yet to be started</div>
+        </ng-template>
+        <div *ngIf="userStoryData.tshirtSize; then showTshirtSize else hideTshirtSize"></div>
+        <ng-template #showTshirtSize>
+            <div fxFlex="5%">{{userStoryData.tshirtSize}}</div>
+        </ng-template>
+        <ng-template #hideTshirtSize>
+            <div fxFlex="5%">N/A</div>
+        </ng-template>
+    </div>
+</div>

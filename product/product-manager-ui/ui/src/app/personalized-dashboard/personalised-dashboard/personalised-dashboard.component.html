@@ -1,0 +1,50 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<div class="body">
+    <h1 class="header">Boards</h1>
+    <mat-divider></mat-divider>
+    <div *ngIf="length == 0; else elseBlock" class="example-card">
+        <mat-card>
+            <div style="height:300px; border-radius: 10px; display: flex; flex-direction: row;">
+                <div style="background: rgb(238, 237, 237); width: 75%; height: 292px; margin:5px; border-radius: 5px">
+                </div>
+                <div style="display: flex; flex-direction: column; width: 25%;">
+                    <div style="background: rgb(238, 237, 237);  height: 145px; margin:5px; border-radius: 5px"></div>
+                    <div style="background: rgb(238, 237, 237);  height: 145px; margin:5px; border-radius: 5px"></div>
+                </div>
+            </div>
+        </mat-card>
+        <div class="emptyBoardDescription">
+            <h2>You don't have a product yet</h2>
+            <p>Tap the + button to create your first board</p>
+        </div>
+    </div>
+
+    <ng-template #elseBlock>
+       
+                <div>
+                        <mat-form-field class="example-full-width">
+                                <input matInput name="search" type="text||email" [(ngModel)]="searchItem" placeholder="Search">
+                        </mat-form-field>
+                    </div>
+                    <div class="listOfProducts">
+                        <div style="margin-bottom: 30px"><span>Personal Boards</span></div>
+                        <div>
+                                <app-product-card  class="inline-block" *ngFor="let products of userProductList| filter:searchItem"
+                                [productId]="products.productId" [productData]="products"></app-product-card>
+                        </div>
+                </div>
+
+    </ng-template>
+    <button class="addButton" mat-fab color=primary (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+    </button>
+
+</div>
