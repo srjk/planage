@@ -1,0 +1,133 @@
+version: '3'
+
+services:
+# DISCOVERY SERVICE
+  discovery:
+    build:
+      context: eurekaNamingServer
+      dockerfile: Dockerfile
+    ports:
+      - 8761:8761
+
+# API GATEWAY
+  gateway:
+    build:
+      context: zuulApiGateway
+      dockerfile: Dockerfile
+    ports:
+      - 8762:8762
+    depends_on:
+      - discovery
+
+# mongodb
+  mongodb:
+    image: mongo:latest
+    container_name: 'pro-mongodb'
+#        restart: always
+    ports:
+      - '27017:27017'
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: 'root'
+#      MONGO_INITDB_ROOT_PASSWORD: 'root'
+    volumes:
+      - '/$home/workspace/process/data/mongo:/data/db'
+
+#   SERVICES
+
+  process:
+    image: docker.io/aparnachoubey/process-working-dev_process:0.3.5
+    # build:
+    #   context: process-manager-ui
+    #   dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    depends_on:
+      - discovery
+#    container_name: angularcontainer  # Container name
+
+  process-manager-boot:
+     image: docker.io/aparnachoubey/process-working-dev_process-manager-boot:0.3.3
+    #  build:
+    #   context: process-spring-boot
+    #   dockerfile: Dockerfile
+     ports:
+       - 8080:8080
+     depends_on:
+       - discovery
+       - mongodb
+
+  process-nodejs:
+    image: docker.io/aparnachoubey/process-working-dev_process-nodejs:0.2.8
+    # build:
+    #   context: node
+    #   dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
+  program-api:
+    image: docker.io/shukabr1/programmanager_program-api:0.7.3
+    ports:
+      - 8081:8081
+    depends_on:
+      - discovery
+
+  scheduler:
+    image: docker.io/shukabr1/programmanager_scheduler:0.8.0
+    ports:
+      - 8082:8082
+    depends_on:
+      - discovery
+
+  sprint-api:
+    image: docker.io/namanshrimali1/sprint_sprint-api:0.3.2
+    ports:
+      - 8085:8085
+    depends_on:
+      - discovery
+
+  sprint-ui:
+    image: docker.io/namanshrimali1/sprint_angular-ui:0.3.2
+    ports:
+      - 8086:8086
+    depends_on:
+      - discovery
+
+  sprint-nodejs:
+    image: docker.io/namanshrimali1/proflo-node:0.1.2
+    ports:
+      - 3001:3001
+
+
+  product-api:
+    image: docker.io/namanshrimali1/sprint_sprint-api:0.3.2
+#    build:
+#      context: ./product-api-service
+#      dockerfile: Dockerfile
+    ports:
+      - 8084:8084
+    depends_on:
+      - discovery
+
+  product-ui:
+    image: docker.io/bhavaniac/tests1_angular-ui:0.3.1
+#    build:
+#      context: process-manager-ui
+#      dockerfile: Dockerfile
+    ports:
+      - 8083:8083
+    depends_on:
+      - discovery
+
+#  ​
+  # rabbitmq
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: 'planage-rabbitmq'
+#        restart: always
+#    environment:
+#      RABBITMQ_DEFAULT_USER: ''
+#      RABBITMQ_DEFAULT_PASS: 'root'
+#      RABBITMQ_DEFAULT_VHOST: '/'
+    ports:
+      - '15672:15672'
+      - '5672:5672'

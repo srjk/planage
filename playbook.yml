@@ -1,0 +1,36 @@
+---
+- hosts: all
+  become: true
+  pre_tasks:
+    - name: install_python
+      raw: apt-get install -y python2.7
+  roles:
+    - geerlingguy.docker
+    - geerlingguy.git
+
+- hosts: all
+  pre_tasks:
+    - name: install_python
+      raw: apt-get install python2.7
+      become: true
+  tasks:
+    # - name: create_directory
+    #   shell: mkdir git_data
+    #   args:
+    #     chdir: /home/ubuntu
+    - name: clone_planage_repository
+      git:
+        repo: git@gitlab-ibm.stackroute.in:ibm-wave9-planage/planagecloudconfig.git
+        dest: /home/ubuntu/git_data
+        force: yes
+        version: master
+        update: yes
+        accept_hostkey: yes
+        key_file: /home/ubuntu/.ssh/id_rsa
+    
+    - name: start_project
+      shell: docker-compose up --build -d
+      args:
+        chdir: /home/ubuntu/git_data/
+      environment:
+        NODE_ENV: production
